@@ -2,7 +2,8 @@
 This repository contains a step by step procedure to the complete RTL2GDSII flow of PICORV32A RISC-V core design using open-source EDA tool OpenLANE and Google-Skywater’s first manufacturable open source 130nm PDK.
 ## LAB WORK
 
-### Important Files
+### Understanding the Input and Output Files
+
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir$ ls
 openlane  pdks
@@ -53,6 +54,7 @@ drwxr-xr-x 2 root root  4096 Jun 28  2021 doc
 drwxr-xr-x 2 root root  4096 Jun 28  2021 cdl
 drwxr-xr-x 2 root root 36864 Jun 28  2021 mag
 ```
+The `config.tcl` show the values set for some important variables. The values `sky130A_sky130_fd_sc_hd_config.tcl` will overwrite the values of variables in `config.tcl`. For example, the `CLOCK_PERIOD` used in the flow will be `12ns` instead of `5 ns`.
 ```
 ‌‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a$ less config.tcl
 
