@@ -8,9 +8,9 @@ This repository contains a step by step procedure to the complete RTL2GDSII flow
 #### - [Design Synthesis and Results](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-synthesis-and-results)
 
 ### DAY 2
-#### - [Understanding the File Structure](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#understanding-the-file-structure)
-#### - [OpenLANE Initialization](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#openlane-initialization)
-#### - [Design Preparation](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-preparation)
+#### - [Understanding the Floorplan variables and settings]()
+#### - [Floorplan]()
+#### - [Floorplan in MAGIC]()
 #### - [Design Synthesis and Results](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-synthesis-and-results)
 
 ### DAY 1
