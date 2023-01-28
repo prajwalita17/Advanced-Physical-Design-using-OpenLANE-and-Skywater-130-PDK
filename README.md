@@ -371,7 +371,7 @@ Flip flop ratio =1613/14876 = 10.84 %
 
 ### Floorplanning
 
-Once the synthesis step is done, the next step is floorplan. Before `run_floorplan` let us look at the variables required for the floorplan step and their default values.
+Once the synthesis step is done, the next step is floorplan. Before `run_floorplan` let us look at the list variables rof equired for the floorplan step and their default values.
 | Variable      | Description                                                   |
 |---------------|---------------------------------------------------------------|
 | `FP_CORE_UTIL`  | The core utilization percentage. <br> (Default: `50` percent)|
@@ -413,6 +413,49 @@ Once the synthesis step is done, the next step is floorplan. Before `run_floorpl
 | `GND_NETS` | Specifies the ground nets/pins to be used when creating the power grid for the design. |
 | `SYNTH_USE_PG_PINS_DEFINES` | Specifies the power guard used in the verilog source code to specify the power and ground pins. This is used to automatically extract `VDD_NETS` and `GND_NET` variables from the verilog, with the assumption that they will be order `inout vdd1, inout gnd1, inout vdd2, inout gnd2, ...`. |
 
+The `floorplan.tcl` file contains the default values of variables required for the floorplan. For example the core utilization ratio `FP_CORE_UTIL` can be seen as 50%. 
+
+```
+‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less floorplan.tcl 
+```
+# Floorplan defaults
+set ::env(FP_IO_VMETAL) 3
+set ::env(FP_IO_HMETAL) 4
+
+set ::env(FP_SIZING) relative
+set ::env(FP_CORE_UTIL) 50
+set ::env(FP_CORE_MARGIN) 0
+set ::env(FP_ASPECT_RATIO) 1
+
+set ::env(FP_PDN_VOFFSET) 16.32
+set ::env(FP_PDN_VPITCH) 153.6
+set ::env(FP_PDN_HOFFSET) 16.65
+set ::env(FP_PDN_HPITCH) 153.18
+
+set ::env(FP_PDN_AUTO_ADJUST) 1
+
+set ::env(FP_PDN_CORE_RING) 0
+set ::env(FP_PDN_ENABLE_RAILS) 1
+
+set ::env(FP_PDN_CHECK_NODES) 1
+
+set ::env(FP_IO_MODE) 1; # 0 matching mode - 1 random equidistant mode
+set ::env(FP_IO_HLENGTH) 4
+set ::env(FP_IO_VLENGTH) 4
+set ::env(FP_IO_VEXTEND) -1
+set ::env(FP_IO_HEXTEND) -1
+set ::env(FP_IO_VTHICKNESS_MULT) 2
+set ::env(FP_IO_HTHICKNESS_MULT) 2
+
+set ::env(BOTTOM_MARGIN_MULT) 4
+set ::env(TOP_MARGIN_MULT) 4
+set ::env(LEFT_MARGIN_MULT) 12
+set ::env(RIGHT_MARGIN_MULT) 12
+
+set ::env(FP_HORIZONTAL_HALO) 10
+set ::env(FP_VERTICAL_HALO) $::env(FP_HORIZONTAL_HALO)
+```
+These values will be overwritten by the values set by `picorv32a/config.tcl` and `picorv32a/sky130_fd_sc_hd_config.tcl` files. `picorv32a/sky130_fd_sc_hd_config.tcl` has the highest priority and hence it's important to make sure this file had the intended values for the variables.
                 
 ```bash
 %run_floorplan
