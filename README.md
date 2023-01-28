@@ -546,3 +546,28 @@ For this we need the `tech file`, `LEf file` and `DEF file`. `/home/kunalg123/De
 <img width="602" alt="unplaced cells" src="https://user-images.githubusercontent.com/104830557/215285581-c7d9f8eb-344c-4363-8f36-f9ddc84df41d.png">
 </div>
 
+### Day 3
+## Cell Characterization
+```
+prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane$git clone https://github.com/nickson-jose/vsdstdcelldesign.git
+```
+```
+prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic$ cp sky130A.tech ../../../../openlane/vsdstdcelldesign/
+```
+```
+‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ls -ltr
+total 180
+-rw-rw-r-- 1 prajwalita17 prajwalita17  13525 Jan 29 00:07 README.md
+-rw-rw-r-- 1 prajwalita17 prajwalita17  11357 Jan 29 00:07 LICENSE
+drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 Images
+drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 extras
+drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 libs
+-rw-rw-r-- 1 prajwalita17 prajwalita17   2716 Jan 29 00:07 sky130_inv.mag
+-rwxr-xr-x 1 prajwalita17 prajwalita17 136710 Jan 29 00:11 sky130A.tech
+```
+```
+prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ magic -T sky130.tech sky130_inv.mag 
+```
+<div align="center">
+<img width="170" alt="vsdstdcell" src="https://user-images.githubusercontent.com/104830557/215286280-5d2e9b10-8de3-4136-ae65-d1496fc1a72f.png">
+</div>
