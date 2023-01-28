@@ -3,7 +3,7 @@ This repository contains a step by step procedure to the complete RTL2GDSII flow
 ## LAB WORK
 
 ### Understanding the Input and Output Files
-
+All the Process Design Kits(PDKs) are listed under the pdks/ directory. We use Sky130A PDK for this design. There are other open-source PDKs and related files are also available in the pdk/ directory. The location of the PDK directory is given of $PDK_ROOT variable.
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir$ ls
 openlane  pdks
@@ -104,41 +104,50 @@ total 447328
 -rwxr-xr-x 1 root root 12841550 Jun 28  2021 sky130_fd_sc_hd__ff_100C_1v95.lib
 -rwxr-xr-x 1 root root 12840659 Jun 28  2021 sky130_fd_sc_hd__ff_100C_1v65.lib
 ```
+
+Once we understand the file structure and libraries, let's now move to OpenLANE PD flow.
+
 ### OpenLANE Initialization
-   For invoking OpenLANE in Linux Ubuntu, we should first run the docker everytime we use OpenLANE. This is done by using the following script:
-    
-    docker
+   For invoking OpenLANE in Linux Ubuntu, we should run the docker everytime we use OpenLANE. This is done by typing `docker` as shown.
    
    A custom shell script or commands can be generated to make the task simpler.
-   
    - To invoke OpenLANE run the `./flow.tcl` script.
    - OpenLANE supports two modes of operation: interactive and autonomous.
-   - To use interactive mode use `-interactive` flag with `./flow.tcl`
-  
- <div align="center">
- <img width="614" alt="invoking openlane" src="https://user-images.githubusercontent.com/104830557/214817276-3e661bf3-d421-4c63-86c5-912f3db5da73.png">
-     </div>
-     
+   - To use interactive mode use `-interactive` switch with `./flow.tcl`
+The interactive switch lets us do a step by step process. So we will be able to see the changes in the design and output files at each stage.
+
+```
+prajwalita17@vsd-pd-workshop-05:/home/kunalg123/Desktop/work/tools/openlane_working_dir/openlane$ docker
+bash-4.2$ ./flow.tcl -interactive
+[INFO]: 
+	___   ____   ___  ____   _       ____  ____     ___
+	/   \ |    \ /  _]|    \ | |     /    ||    \   /  _]
+	|     ||  o  )  [_ |  _  || |    |  o  ||  _  | /  [_
+	|  O  ||   _/    _]|  |  || |___ |     ||  |  ||    _]
+	|     ||  | |   [_ |  |  ||     ||  _  ||  |  ||   [_
+	\___/ |__| |_____||__|__||_____||__|__||__|__||_____|
+
+
+[INFO]: Version: v0.21
+[INFO]: Running interactively
+%
+```
+    
  ### Design Preparation
  
-   The first step after invoking OpenLANE is to import the openlane package of required version. This is done using following command. Here 0.9 is the required version of OpenLANE.
+   The next step after invoking OpenLANE is to import the openlane package of required version. This is done using following command. Here 0.9 is the required version of OpenLANE.
  
     package require openlane 0.9
    The next step is to prepare our design for the OpenLANE flow. This is done using following command:   
   
     prep -design <design-name>
-
- 
- <div align="center">
-   <img width="444" alt="prep_design" src="https://user-images.githubusercontent.com/104830557/214815186-d7e0f4dc-562c-497f-9cd4-a1f513aae809.png">
-    </div>
     
  During the design preparation the technology LEF and cell LEF files are merged together to obtain a `merged.lef` file. The LEF file contains information like the layer information, set of design rules, information about each standard cell which is required for place and route. 
  
 ```bash  
-% package require openlane 0.9
+%package require openlane 0.9
 0.9
-% prep design picorv32a
+% prep -design picorv32a
 [INFO]: Using design configuration at /openLANE_flow/designs/picorv32a/config.tcl
 [INFO]: Sourcing Configurations from /openLANE_flow/designs/picorv32a/config.tcl
 [INFO]: PDKs root directory: /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks
@@ -146,9 +155,9 @@ total 447328
 [INFO]: Setting PDKPATH to /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A
 [INFO]: Standard Cell Library: sky130_fd_sc_hd
 [INFO]: Sourcing Configurations from /openLANE_flow/designs/picorv32a/config.tcl
-[INFO]: Current run directory is /openLANE_flow/designs/picorv32a/runs/26-01_07-47
+[INFO]: Current run directory is /openLANE_flow/designs/picorv32a/runs/28-01_10-00
 [INFO]: Preparing LEF Files
-[INFO]: Extracting the number of available metal layers from ./Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd.tlef
+[INFO]: Extracting the number of available metal layers from /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd.tlef
 [INFO]: The number of available metal layers is 6
 [INFO]: The available metal layers are li1 met1 met2 met3 met4 met5
 [INFO]: Merging LEF Files...
@@ -166,6 +175,7 @@ mergeLef.py : Merging LEFs complete
 [INFO]: Generating Exclude List...
 [INFO]: Storing configs into config.tcl ...
 [INFO]: Preparation complete
+
 ```
  ### Design Synthesis and Results
  
