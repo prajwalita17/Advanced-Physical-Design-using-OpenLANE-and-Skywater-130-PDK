@@ -418,7 +418,8 @@ The `floorplan.tcl` file contains the default values of variables required for t
 ```
 ‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less floorplan.tcl 
 ```
-# Floorplan defaults
+### Floorplan defaults
+```
 set ::env(FP_IO_VMETAL) 3
 set ::env(FP_IO_HMETAL) 4
 
@@ -455,7 +456,8 @@ set ::env(RIGHT_MARGIN_MULT) 12
 set ::env(FP_HORIZONTAL_HALO) 10
 set ::env(FP_VERTICAL_HALO) $::env(FP_HORIZONTAL_HALO)
 ```
-These values will be overwritten by the values set by `picorv32a/config.tcl` and `picorv32a/sky130_fd_sc_hd_config.tcl` files. `picorv32a/sky130_fd_sc_hd_config.tcl` has the highest priority and hence it's important to make sure this file had the intended values for the variables.
+The values in `floorplan.tcl` will be overwritten by the values set by `picorv32a/config.tcl` and `picorv32a/sky130_fd_sc_hd_config.tcl` files. 
+`picorv32a/sky130_fd_sc_hd_config.tcl` has the highest priority and hence it's important to make sure this file has the intended values for the variables.
                 
 ```bash
 %run_floorplan
