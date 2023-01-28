@@ -571,3 +571,16 @@ prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openla
 <div align="center">
 <img width="170" alt="vsdstdcell" src="https://user-images.githubusercontent.com/104830557/215286280-5d2e9b10-8de3-4136-ae65-d1496fc1a72f.png">
 </div>
+```‌
+‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ls -ltr
+total 188
+-rw-rw-r-- 1 prajwalita17 prajwalita17  13525 Jan 29 00:07 README.md
+-rw-rw-r-- 1 prajwalita17 prajwalita17  11357 Jan 29 00:07 LICENSE
+drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 Images
+drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 extras
+drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 libs
+-rw-rw-r-- 1 prajwalita17 prajwalita17   2716 Jan 29 00:07 sky130_inv.mag
+-rwxr-xr-x 1 prajwalita17 prajwalita17 136710 Jan 29 00:11 sky130A.tech
+-rw-rw-r-- 1 prajwalita17 prajwalita17   1425 Jan 29 00:40 sky130_inv.ext
+-rw-rw-r-- 1 prajwalita17 prajwalita17    353 Jan 29 00:41 sky130_inv.spice
+```
