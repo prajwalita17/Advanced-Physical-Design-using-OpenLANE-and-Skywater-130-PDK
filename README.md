@@ -179,14 +179,17 @@ mergeLef.py : Merging LEFs complete
 ```
  ### Design Synthesis and Results
  
-   The first step in OpenLANE flow is RTL Synthesis of the design loaded. This is done using the following command.
+The next step in OpenLANE flow is RTL Synthesis of the design(picorv32a) loaded. This is done using the following command.
+   `run_synthesis`
    
-    run_synthesis
-From the report post-synthesis, we get the following statistics.
+Yosys is a framework for Verilog RTL synthesis. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains.
+
+After completion of synthesis, we get the following statistics.
 
 ```bash
 %run_synthesis
-  === picorv32a ===
+ 28. Printing statistics.
+=== picorv32a ===
 
    Number of wires:              14596
    Number of wire bits:          14978
@@ -202,21 +205,69 @@ From the report post-synthesis, we get the following statistics.
      sky130_fd_sc_hd__a21bo_2      149
      sky130_fd_sc_hd__a21boi_2       8
      sky130_fd_sc_hd__a21o_2        57
-     .
-     .
-     .
-     sky130_fd_sc_hd__buf_1       1656
-     sky130_fd_sc_hd__buf_2          8
+     sky130_fd_sc_hd__a21oi_2      244
+     sky130_fd_sc_hd__a221o_2       86
+     sky130_fd_sc_hd__a22o_2      1013
+     sky130_fd_sc_hd__a2bb2o_2    1748
+     sky130_fd_sc_hd__a2bb2oi_2     81
+     sky130_fd_sc_hd__a311o_2        2
+     sky130_fd_sc_hd__a31o_2        49
+     sky130_fd_sc_hd__a31oi_2        7
+     sky130_fd_sc_hd__a32o_2        46
+     sky130_fd_sc_hd__a41o_2         1
+     sky130_fd_sc_hd__and2_2       157
+     sky130_fd_sc_hd__and3_2        58
+     sky130_fd_sc_hd__and4_2       345
+     sky130_fd_sc_hd__and4b_2        1
+     sky130_fd_sc_hd__buf_1       1655
+     sky130_fd_sc_hd__buf_2          9
+     sky130_fd_sc_hd__bufinv_8      17
      sky130_fd_sc_hd__conb_1        42
      sky130_fd_sc_hd__dfxtp_2     1613
-     sky130_fd_sc_hd__inv_2       1615
+     sky130_fd_sc_hd__inv_12        32
+     sky130_fd_sc_hd__inv_2       1546
+     sky130_fd_sc_hd__inv_4          4
+     sky130_fd_sc_hd__inv_6          7
+     sky130_fd_sc_hd__inv_8          9
      sky130_fd_sc_hd__mux2_1      1224
-     .
-     .
-     .
-   Chip area for module '\picorv32a': 147712.918400
-     .
-     .
+     sky130_fd_sc_hd__mux2_2         2
+     sky130_fd_sc_hd__mux4_1       221
+     sky130_fd_sc_hd__nand2_2       78
+     sky130_fd_sc_hd__nor2_2       524
+     sky130_fd_sc_hd__nor2b_2        1
+     sky130_fd_sc_hd__nor3_2        42
+     sky130_fd_sc_hd__nor4_2         1
+     sky130_fd_sc_hd__o2111a_2       2
+     sky130_fd_sc_hd__o211a_2       69
+     sky130_fd_sc_hd__o211ai_2       6
+     sky130_fd_sc_hd__o21a_2        54
+     sky130_fd_sc_hd__o21ai_2      141
+     sky130_fd_sc_hd__o21ba_2      209
+     sky130_fd_sc_hd__o21bai_2       1
+     sky130_fd_sc_hd__o221a_2      203
+     sky130_fd_sc_hd__o221a_4        1
+     sky130_fd_sc_hd__o221ai_2       7
+     sky130_fd_sc_hd__o22a_2      1312
+     sky130_fd_sc_hd__o22ai_2       59
+     sky130_fd_sc_hd__o2bb2a_2     119
+     sky130_fd_sc_hd__o2bb2ai_2     92
+     sky130_fd_sc_hd__o311a_2        8
+     sky130_fd_sc_hd__o31a_2        19
+     sky130_fd_sc_hd__o31ai_2        1
+     sky130_fd_sc_hd__o32a_2       109
+     sky130_fd_sc_hd__o41a_2         2
+     sky130_fd_sc_hd__or2_2       1000
+     sky130_fd_sc_hd__or2_4         88
+     sky130_fd_sc_hd__or2b_2        25
+     sky130_fd_sc_hd__or3_2         65
+     sky130_fd_sc_hd__or3_4          3
+     sky130_fd_sc_hd__or3b_2         5
+     sky130_fd_sc_hd__or4_2         90
+     sky130_fd_sc_hd__or4_4          3
+     sky130_fd_sc_hd__or4b_2         6
+     sky130_fd_sc_hd__or4bb_2        2
+
+   Chip area for module '\picorv32a': 148708.873600
      .
 [INFO]: Changing netlist from 0 to /openLANE_flow/designs/picorv32a/runs/26-01_10-26/results/synthesis/picorv32a.synthesis.v
 [INFO]: Running Static Timing Analysis...
@@ -225,6 +276,8 @@ From the report post-synthesis, we get the following statistics.
      .
 [INFO]: Synthesis was successful‌
 ```
+```
+Assignment 1
 #### Calculation of Flop ratio
 
 From the report we can see that
@@ -233,37 +286,44 @@ Number of cells = 14876
 Number of flip flops (sky130_fd_sc_hd__dfxtp_2) = 1613
 
 Flip flop ratio =1613/14876 = 10.84 %
+```
+Once the synthesis is complete, `runs/` folder would be created inside the `picorv32a` folder as shown. The contents inside the picorv32/runs/28-01_10-00/tmp will be required by OpenLANE at various stages. The `merged.lef` in the `tmp` folder is the LEF file created during the design preparation. This LEF file contains the tech and cell LEF information.
 
-### Synthesis Variables
+<div align="center">
+<img width="735" alt="CELL LEF AND TECH LEF" src="https://user-images.githubusercontent.com/104830557/215262938-95fb2ef0-9aea-49d4-a48b-81e8a71863a3.png">
+</div>
 
-| Variable      | Description                                                   |
-|---------------|---------------------------------------------------------------|
-| `LIB_SYNTH` | The library used for synthesis by yosys. <br> (Default: `$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/lib/sky130_fd_sc_hd__tt_025C_1v80.lib`)|
-| `SYNTH_BIN` | The yosys binary used in the flow. <br> (Default: `yosys`) |
-| `SYNTH_DRIVING_CELL`  | The cell to drive the input ports. <br>(Default: `sky130_fd_sc_hd__inv_8`)|
-| `SYNTH_DRIVING_CELL_PIN`  | The name of the SYNTH_DRIVING_CELL output pin. <br>(Default: `Y`)|
-| `SYNTH_CAP_LOAD` | The capacitive load on the output ports in femtofarads. <br> (Default: `17.65` ff)|
-| `SYNTH_MAX_FANOUT`  | The max load that the output ports can drive. <br> (Default: `5` cells) |
-| `SYNTH_MAX_TRAN` | The max transition time (slew) from high to low or low to high on cell inputs in ns. Used in synthesis <br> (Default: Calculated at runtime as `10%` of the provided clock period, unless this exceeds a set DEFAULT_MAX_TRAN, in which case it will be used as is). |
-| `SYNTH_STRATEGY` | Strategies for abc logic synthesis and technology mapping <br> Possible values are `DELAY/AREA 0-3/0-2`; the first part refers to the optimization target of the synthesis strategy (area vs. delay) and the second one is an index. <br> (Default: `AREA 0`)|
-| `SYNTH_BUFFERING` | Enables abc cell buffering <br> Enabled = 1, Disabled = 0 <br> (Default: `1`)|
-| `SYNTH_SIZING` | Enables abc cell sizing (instead of buffering) <br> Enabled = 1, Disabled = 0 <br> (Default: `0`)|
-| `SYNTH_READ_BLACKBOX_LIB` | A flag that enable reading the full(untrimmed) liberty file as a blackbox for synthesis. Please note that this is not used in technology mapping. This should only be used when trying to preserve gate instances in the rtl of the design.  <br> Enabled = 1, Disabled = 0 <br> (Default: `0`)|
-| `SYNTH_NO_FLAT` | A flag that disables flattening the hierarchy during synthesis, only flattening it after synthesis, mapping and optimizations. <br> Enabled = 1, Disabled = 0 <br> (Default: `0`)|
-| `SYNTH_SHARE_RESOURCES` | A flag that enables yosys to reduce the number of cells by determining shareable resources and merging them. <br> Enabled = 1, Disabled = 0 <br> (Default: `1`)|
-| `SYNTH_ADDER_TYPE` | Adder type to which the $add and $sub operators are mapped to. <br> Possible values are `YOSYS/FA/RCA/CSA`; where `YOSYS` refers to using Yosys internal adder definition, `FA` refers to full-adder structure, `RCA` refers to ripple carry adder structure, and `CSA` refers to carry select adder. <br> (Default: `YOSYS`)|
-| `LIB_SLOWEST` | Points to the lib file, corresponding to the slowest corner, for max delay calculation during STA. <br> (Default: `$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib`) |
-| `LIB_FASTEST` | Points to the lib file, corresponding to the fastest corner, for min delay calculation during STA. <br> (Default: `$::env(PDK_ROOT)/$::env(PDK)/libs.ref/$::env(STD_CELL_LIBRARY)/lib/sky130_fd_sc_hd__ss_100C_1v60.lib`) |
-| `LIB_TYPICAL` | Library used for typical delay calculation during STA. <br> (Default`LIB_SYNTH`) |
-| `CLOCK_BUFFER_FANOUT` | Fanout of clock tree buffers. <br> (Default: `16`) |
-| `ROOT_CLK_BUFFER` | Root clock buffer of the clock tree. <br> (Default: `sky130_fd_sc_hd__clkbuf_16`) |
-| `CLK_BUFFER` | Clock buffer used for inner nodes of the clock tree. <br> (Default: `sky130_fd_sc_hd__clkbuf_4`) |
-| `CLK_BUFFER_INPUT` | Input pin of the clock tree buffer. <br> (Default: `A`) |
-| `CLK_BUFFER_OUTPUT` | Output pin of the clock tree buffer. <br> (Default: `X`) |
-| `BASE_SDC_FILE` | Specifies the base sdc file to source before running Static Timing Analysis. <br> (Default: `$::env(OPENLANE_ROOT)/scripts/base.sdc`) |
-| `VERILOG_INCLUDE_DIRS` | Specifies the verilog includes directories. <br> Optional. |
-| `SYNTH_FLAT_TOP` | Specifies whether or not the top level should be flattened during elaboration. 1 = True, 0= False <br> Default: `0`. |
-| `IO_PCT` | Specifies the percentage of the clock period used in the input/output delays. Ranges from 0 to 1.0. <br> (Default: `0.2`) |
+```
+‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00$ ls -ltr
+total 52
+-rwxr-xr-x  1 prajwalita17 prajwalita17   170 Jun 28  2021 PDK_SOURCES
+drwxr-xr-x 11 prajwalita17 prajwalita17  4096 Jan 28 15:30 results
+drwxr-xr-x 11 prajwalita17 prajwalita17  4096 Jan 28 15:30 reports
+-rw-r--r--  1 prajwalita17 prajwalita17    15 Jan 28 15:30 OPENLANE_VERSION
+drwxr-xr-x 11 prajwalita17 prajwalita17  4096 Jan 28 15:30 logs
+drwxr-xr-x 11 prajwalita17 prajwalita17  4096 Jan 28 15:49 tmp
+-rw-r--r--  1 prajwalita17 prajwalita17  2862 Jan 28 15:50 cmds.log
+-rw-r--r--  1 prajwalita17 prajwalita17 21018 Jan 28 15:50 config.tcl
+prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00$ ls tmp -ltr
+total 23212
+-rwxr-xr-x 1 prajwalita17 prajwalita17      202 Jun 28  2021 tracks_copy.info
+-rw-r--r-- 1 prajwalita17 prajwalita17  2264912 Jan 28 15:30 merged.lef
+-rw-r--r-- 1 prajwalita17 prajwalita17       33 Jan 28 15:30 met_layers_list.txt
+-rw-r--r-- 1 prajwalita17 prajwalita17  2264912 Jan 28 15:30 merged_unpadded.lef
+-rwxr-xr-x 1 prajwalita17 prajwalita17     6975 Jan 28 15:30 trimmed.lib.exclude.list
+-rw-r--r-- 1 prajwalita17 prajwalita17  6291198 Jan 28 15:30 trimmed.lib
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 routing
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 placement
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 magic
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 lvs
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 klayout
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 floorplan
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 cvc
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 cts
+-rw-r--r-- 1 prajwalita17 prajwalita17 12892372 Jan 28 15:49 sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:49 synthesis
+```
+
 
 ## Floorplanning
 Once the synthesis step is done, the next step is floorplan. 
