@@ -534,7 +534,7 @@ Let us see the def file after floorplan in magic using the following command. Fo
 <img width="486" alt="tcon" src="https://user-images.githubusercontent.com/104830557/214843881-6e307a0d-fc51-451c-aae6-e7b5b3e05b4f.png">
 </div>
 <div align="center">
-<img width="800" alt="magic zoom" src="https://user-images.githubusercontent.com/104830557/215267918-0e968d99-b261-4c45-82f4-e5784d3540e4.png">
+<img width="605" alt="magiczoom" src="https://user-images.githubusercontent.com/104830557/215268066-2757b4aa-91d7-4ede-afff-7340895dbab3.png">
 </div>
 
 ### PicoRV32 design  and Libraries
