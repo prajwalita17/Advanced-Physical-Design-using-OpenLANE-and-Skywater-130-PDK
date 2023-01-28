@@ -12,10 +12,10 @@ This repository contains a step by step procedure to the complete RTL2GDSII flow
 #### - [Floorplan]()
 #### - [Floorplan in MAGIC]()
 #### - [Design Synthesis and Results](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-synthesis-and-results)
-
-### DAY 1
-### Understanding the File Structure
-
+-----------------------------------------------------------------------------------------------------------------------------------
+## DAY 1
+## Understanding the File Structure
+-----------------------------------------------------------------------------------------------------------------------------------
 All the Process Design Kits(PDKs) are listed under the pdks/ directory. We use Sky130A PDK for this design. There are other open-source PDKs and related files are also available in the pdk/ directory. The location of the PDK directory is given of $PDK_ROOT variable.
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir$ ls
@@ -366,11 +366,10 @@ Number of flip flops (sky130_fd_sc_hd__dfxtp_2) = 1613
 
 Flip flop ratio =1613/14876 = 10.84 %
 ```
-
+-----------------------------------------------------------------------------------------------------------------------------------
 ### DAY 2
-
 ### Floorplanning
-
+-----------------------------------------------------------------------------------------------------------------------------------
 Once the synthesis step is done, the next step is floorplan. Before `run_floorplan` let us look at the list variables rof equired for the floorplan step and their default values.
 | Variable      | Description                                                   |
 |---------------|---------------------------------------------------------------|
@@ -525,7 +524,8 @@ Assignment 2: Find the die area.
 Die area = 662.870 * 673.590
 	 = 446502.6033 sq. microns
 ```
-Let us see the def file after floorplan in magic using the following command. For this we need the locations of tech file, LEf file and DEF file. `/home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech` is the location tech file. `/home/kunalg123/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/tmp/merged.lef` is the location of the LEF file and DEF file is present in the floorplan folder.
+Let us view the floorplan in magic using the following command. 
+For this we need the `tech file`, `LEf file` and `DEF file`. `/home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech` is the location tech file. `/home/kunalg123/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/tmp/merged.lef` is the location of the LEF file and DEF file is present in the floorplan folder.
 ```
 ‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/results/floorplan$ magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 ```
