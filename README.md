@@ -458,11 +458,12 @@ set ::env(FP_VERTICAL_HALO) $::env(FP_HORIZONTAL_HALO)
 ```
 The values in `floorplan.tcl` will be overwritten by the values set by `picorv32a/config.tcl` and `picorv32a/sky130_fd_sc_hd_config.tcl` files. 
 `picorv32a/sky130_fd_sc_hd_config.tcl` has the highest priority and hence it's important to make sure this file has the intended values for the variables.
+Once we make sure the variables for floorplan are set, we run the floorplan using the `run_floorplan` command.
                 
 ```bash
 %run_floorplan
 [INFO]: PDN generation was successful.
-[INFO]: Changing layout from /openLANE_flow/designs/picorv32a/runs/26-01_11-22/results/floorplan/picorv32a.floorplan.def to /openLANE_flow/designs/picorv32a/runs/26-01_11-22/tmp/floorplan/7-pdn.def
+[INFO]: Changing layout from /openLANE_flow/designs/picorv32a/runs/28-01_10-00/results/floorplan/picorv32a.floorplan.def to /openLANE_flow/designs/picorv32a/runs/28-01_10-00/tmp/floorplan/7-pdn.def
 
 ```
 ```bash
