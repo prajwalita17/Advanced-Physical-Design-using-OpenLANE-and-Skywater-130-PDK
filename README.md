@@ -54,7 +54,7 @@ drwxr-xr-x 2 root root  4096 Jun 28  2021 doc
 drwxr-xr-x 2 root root  4096 Jun 28  2021 cdl
 drwxr-xr-x 2 root root 36864 Jun 28  2021 mag
 ```
-The `config.tcl` show the values set for some important variables. The values `sky130A_sky130_fd_sc_hd_config.tcl` will overwrite the values of variables in `config.tcl`. For example, the `CLOCK_PERIOD` used in the flow will be `12ns` instead of `5 ns`.
+The `config.tcl` show the values set for some important variables. The `sky130A_sky130_fd_sc_hd_config.tcl` has a higher priority as compared to `config.tcl` file. Hence the values for variables in `sky130A_sky130_fd_sc_hd_config.tcl` will overwrite those in the `config.tcl`. For example, the `CLOCK_PERIOD` used in the flow will be `12ns` instead of `5 ns`.
 ```
 ‌‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a$ less config.tcl
 
@@ -81,6 +81,8 @@ set ::env(CLOCK_PERIOD) "12"
 set ::env(FP_CORE_UTIL) 35
 set ::env(PL_TARGET_DENSITY) [ expr ($::env(FP_CORE_UTIL)+5) / 100.0 ]
 ```
+The `sky130_fd_sc_hd` consists of various libraries for different process, voltage and temperature (PVT) corners. For example, `sky130_fd_sc_hd__ss_n40C_1v44.lib` corresponds to a PVT corner have slow(NMOS) slow(PMOS) process, -40^o C temperature and 1.44 V operating temperature.
+
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.ref/sky130_fd_sc_hd$ ls lib -ltr
 total 447328
