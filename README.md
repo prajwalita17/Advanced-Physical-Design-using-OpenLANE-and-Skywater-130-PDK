@@ -571,6 +571,10 @@ prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openla
 <div align="center">
 <img width="170" alt="vsdstdcell" src="https://user-images.githubusercontent.com/104830557/215286280-5d2e9b10-8de3-4136-ae65-d1496fc1a72f.png">
 </div>
+
+<div align="center">
+<img width="737" alt="spiceextract" src="https://user-images.githubusercontent.com/104830557/215286745-8feb5cfa-fd97-43a0-8702-fed85d8e96c2.png">
+</div>
 ```‌
 ‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ls -ltr
 total 188
