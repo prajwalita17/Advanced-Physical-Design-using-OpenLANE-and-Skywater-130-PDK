@@ -79,6 +79,7 @@ set ::env(CLOCK_PERIOD) "12"
 set ::env(FP_CORE_UTIL) 35
 set ::env(PL_TARGET_DENSITY) [ expr ($::env(FP_CORE_UTIL)+5) / 100.0 ]
 ```
+```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.ref/sky130_fd_sc_hd$ ls lib -ltr
 total 447328
 -rwxr-xr-x 1 root root 12839325 Jun 28  2021 sky130_fd_sc_hd__tt_100C_1v80.lib
