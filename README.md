@@ -489,7 +489,42 @@ Using 5u default boundaries offset
 Random pin placement
 RandomMode Even
 ```
+After floorplan, `picorv32a.floorplan.def` gets created in the `runs/28-01_10-00/results/floorplan` folder as shown.
+```
+prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00/results/floorplan$ ls -ltr
+total 2636
+lrwxrwxrwx 1 prajwalita17 prajwalita17      29 Jan 28 17:45 merged_unpadded.lef -> ../../tmp/merged_unpadded.lef
+-rw-r--r-- 1 prajwalita17 prajwalita17 2438886 Jan 28 17:47 picorv32a.floorplan.def
+-rw-r--r-- 1 prajwalita17 prajwalita17  254571 Jan 28 17:47 picorv32a.floorplan.def.png
+```
+The partial content of `picorv32a.floorplan.def` is as shown. 
 
+```
+prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00/results/floorplan$ less picorv32a.floorplan.def
+
+VERSION 5.8 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN picorv32a ;
+UNITS DISTANCE MICRONS 1000 ;
+DIEAREA ( 0 0 ) ( 662870 673590 ) ;
+ROW ROW_0 unithd 5520 10880 FS DO 1417 BY 1 STEP 460 0 ;
+ROW ROW_1 unithd 5520 13600 N DO 1417 BY 1 STEP 460 0 ;
+ROW ROW_2 unithd 5520 16320 FS DO 1417 BY 1 STEP 460 0 ;
+ROW ROW_3 unithd 5520 19040 N DO 1417 BY 1 STEP 460 0 ;
+ROW ROW_4 unithd 5520 21760 FS DO 1417 BY 1 STEP 460 0 ;
+ROW ROW_5 unithd 5520 24480 N DO 1417 BY 1 STEP 460 0 ;
+ROW ROW_6 unithd 5520 27200 FS DO 1417 BY 1 STEP 460 0 ;
+ROW ROW_7 unithd 5520 29920 N DO 1417 BY 1 STEP 460 0 ;
+.
+.
+.
+```
+```
+Assignment 2: Find the die area.
+Die area = 662.870 * 673.590
+	 = 446502.6033 sq. microns
+```
 ```bash
 ‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/results/floorplan$ magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 ```
