@@ -466,6 +466,30 @@ Once we make sure the variables for floorplan are set, we run the floorplan usin
 [INFO]: Changing layout from /openLANE_flow/designs/picorv32a/runs/28-01_10-00/results/floorplan/picorv32a.floorplan.def to /openLANE_flow/designs/picorv32a/runs/28-01_10-00/tmp/floorplan/7-pdn.def
 
 ```
+```
+prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00/logs/floorplan$ vim 4-ioPlacer.log 
+
+OpenROAD 0.9.0 1415572a73
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+Notice 0: Reading LEF file:  /openLANE_flow/designs/picorv32a/runs/28-01_10-00/tmp/merged.lef
+Notice 0:     Created 13 technology layers
+Notice 0:     Created 25 technology vias
+Notice 0:     Created 440 library cells
+Notice 0: Finished LEF file:  /openLANE_flow/designs/picorv32a/runs/28-01_10-00/tmp/merged.lef
+Notice 0:
+Reading DEF file: /openLANE_flow/designs/picorv32a/runs/28-01_10-00/tmp/floorplan/3-verilog2def_openroad.def
+Notice 0: Design: picorv32a
+Notice 0:     Created 409 pins.
+Notice 0:     Created 14876 components and 115597 component-terminals.
+Notice 0:     Created 14978 nets and 56051 connections.
+Notice 0: Finished DEF file: /openLANE_flow/designs/picorv32a/runs/28-01_10-00/tmp/floorplan/3-verilog2def_openroad.def
+#Macro blocks found: 0
+Using 5u default boundaries offset
+Random pin placement
+RandomMode Even
+```
+
 ```bash
 ‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/results/floorplan$ magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 ```
