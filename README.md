@@ -536,9 +536,13 @@ For this we need the `tech file`, `LEf file` and `DEF file`. `/home/kunalg123/De
 <div align="center">
 <img width="605" alt="magiczoom" src="https://user-images.githubusercontent.com/104830557/215268066-2757b4aa-91d7-4ede-afff-7340895dbab3.png">
 </div>
+<div align="center">
+<img width="800" alt="what_tkcon" src="https://user-images.githubusercontent.com/104830557/215285493-d365c166-e381-4559-bb79-762bd2860f0d.png">
+</div>
+<div align="center">
+<img width="603" alt="decap cells" src="https://user-images.githubusercontent.com/104830557/215285574-30b2d7c9-bf22-4ac6-b307-6630c45b1cdf.png">
+</div>
+<div align="center">
+<img width="602" alt="unplaced cells" src="https://user-images.githubusercontent.com/104830557/215285581-c7d9f8eb-344c-4363-8f36-f9ddc84df41d.png">
+</div>
 
-### PicoRV32 design  and Libraries
-### Design Preparation
-### RTL Synthesis
-### Floorplan
-### Placement
