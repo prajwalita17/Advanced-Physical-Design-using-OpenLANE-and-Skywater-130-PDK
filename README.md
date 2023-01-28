@@ -525,13 +525,18 @@ Assignment 2: Find the die area.
 Die area = 662.870 * 673.590
 	 = 446502.6033 sq. microns
 ```
-```bash
+Let us see the def file after floorplan in magic using the following command. For this we need the locations of tech file, LEf file and DEF file. `/home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech` is the location tech file. `/home/kunalg123/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/tmp/merged.lef` is the location of the LEF file and DEF file is present in the floorplan folder.
+```
 ‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/results/floorplan$ magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 ```
 <div align="center">
 <img width="534" alt="magic" src="https://user-images.githubusercontent.com/104830557/214843831-d8d3eb80-52ae-431b-8c9c-5673a6629b07.png">
 <img width="486" alt="tcon" src="https://user-images.githubusercontent.com/104830557/214843881-6e307a0d-fc51-451c-aae6-e7b5b3e05b4f.png">
 </div>
+<div align="center">
+<img width="800" alt="magic zoom" src="https://user-images.githubusercontent.com/104830557/215267918-0e968d99-b261-4c45-82f4-e5784d3540e4.png">
+</div>
+
 ### PicoRV32 design  and Libraries
 ### Design Preparation
 ### RTL Synthesis
