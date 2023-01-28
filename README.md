@@ -177,12 +177,75 @@ mergeLef.py : Merging LEFs complete
 [INFO]: Preparation complete
 
 ```
+The `config.tcl` present inside the `picorv32a/runs/28-01_10-00` contains the default values or values set for variables during the run. The content of the config file is as shown.
+
+```
+‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00$ less config.tcl 
+
+# Run configs
+set ::env(PDK_ROOT) "/home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks"
+set ::env(BASE_SDC_FILE) "/openLANE_flow/scripts/base.sdc"
+set ::env(BOTTOM_MARGIN_MULT) "4"
+set ::env(CARRY_SELECT_ADDER_MAP) "/home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/openlane/sky130_fd_sc_hd/csa_map.v"
+set ::env(CELLS_LEF) "/openLANE_flow/designs/picorv32a/runs/28-01_10-00/tmp/merged.lef"
+set ::env(CELLS_LEF_UNPADDED) "/openLANE_flow/designs/picorv32a/runs/28-01_10-00/tmp/merged_unpadded.lef"
+set ::env(CELL_CLK_PORT) "CLK"
+set ::env(CELL_PAD) "4"
+set ::env(CELL_PAD_EXCLUDE) "sky130_fd_sc_hd__tap* sky130_fd_sc_hd__decap* sky130_fd_sc_hd__fill*"
+set ::env(CHECK_ASSIGN_STATEMENTS) "0"
+set ::env(CHECK_UNMAPPED_CELLS) "1"
+set ::env(CLK_BUFFER) "sky130_fd_sc_hd__clkbuf_4"
+set ::env(CLK_BUFFER_INPUT) "A"
+set ::env(CLK_BUFFER_OUTPUT) "X"
+set ::env(CLOCK_BUFFER_FANOUT) "16"
+set ::env(CLOCK_NET) "clk"
+set ::env(CLOCK_PERIOD) "12"
+set ::env(CLOCK_PORT) "clk"
+set ::env(CLOCK_TREE_SYNTH) "1"
+set ::env(CONFIGS) "/openLANE_flow/configuration/placement.tcl /openLANE_flow/configuration/lvs.tcl /openLANE_flow/configuration/floorplan.tcl /openLANE_flow/configuration/cts.tcl /openLANE_flow/configuration/general.tcl /openLANE_flow/configuration/synthesis.tcl /openLANE_flow/configuration/routing.tcl /openLANE_flow/configuration/checkers.tcl"
+set ::env(CTS_CLK_BUFFER_LIST) "sky130_fd_sc_hd__clkbuf_1 sky130_fd_sc_hd__clkbuf_2 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_8"
+set ::env(CTS_MAX_CAP) "1.53169"
+set ::env(CTS_REPORT_TIMING) "1"
+set ::env(CTS_ROOT_BUFFER) "sky130_fd_sc_hd__clkbuf_16"
+set ::env(CTS_SINK_CLUSTERING_MAX_DIAMETER) "50"
+set ::env(CTS_SINK_CLUSTERING_SIZE) "20"
+set ::env(CTS_SQR_CAP) "0.258e-3"
+set ::env(CTS_SQR_RES) "0.125"
+set ::env(CTS_TARGET_SKEW) "200"
+set ::env(CTS_TECH_DIR) "N/A"
+```
+Once the design preparation is complete, `runs/` folder would be created inside the `picorv32a` folder as shown. The contents inside the picorv32/runs/28-01_10-00/tmp will be required by OpenLANE at various stages. The `merged.lef` in the `tmp` folder is the LEF file created during the design preparation. This LEF file contains the tech and cell LEF information.
+
+<div align="center">
+<img width="735" alt="CELL LEF AND TECH LEF" src="https://user-images.githubusercontent.com/104830557/215262938-95fb2ef0-9aea-49d4-a48b-81e8a71863a3.png">
+</div>
+
+```
+prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00/tmp$ ls -ltr
+total 23212
+-rwxr-xr-x 1 prajwalita17 prajwalita17      202 Jun 28  2021 tracks_copy.info
+-rw-r--r-- 1 prajwalita17 prajwalita17  2264912 Jan 28 15:30 merged.lef
+-rw-r--r-- 1 prajwalita17 prajwalita17       33 Jan 28 15:30 met_layers_list.txt
+-rw-r--r-- 1 prajwalita17 prajwalita17  2264912 Jan 28 15:30 merged_unpadded.lef
+-rwxr-xr-x 1 prajwalita17 prajwalita17     6975 Jan 28 15:30 trimmed.lib.exclude.list
+-rw-r--r-- 1 prajwalita17 prajwalita17  6291198 Jan 28 15:30 trimmed.lib
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 routing
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 placement
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 magic
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 lvs
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 klayout
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 floorplan
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 cvc
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 cts
+-rw-r--r-- 1 prajwalita17 prajwalita17 12892372 Jan 28 15:49 sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib
+drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:49 synthesis
+```
  ### Design Synthesis and Results
  
 The next step in OpenLANE flow is RTL Synthesis of the design(picorv32a) loaded. This is done using the following command.
    `run_synthesis`
    
-Yosys is a framework for Verilog RTL synthesis. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains.
+Yosys is a framework for Verilog RTL synthesis. It currently has extensive Verilog-2005 support and provides a basic set of synthesis algorithms for various application domains. ABC maps the cells in the netlist to the library.
 
 After completion of synthesis, we get the following statistics.
 
@@ -273,56 +336,24 @@ After completion of synthesis, we get the following statistics.
 [INFO]: Running Static Timing Analysis...
 [INFO]: current step index: 2
      .
-     .
+[INFO]: Setting load to: 0.01765
+set_load  $cap_load [all_outputs]
+tns -3258.36
+wns -24.91
 [INFO]: Synthesis was successful‌
 ```
+Static timing analysis at synthesis stage gives shows a total negative slack of `-3258.36` and worst negative slack of `-24.91`.
+
 ```
-Assignment 1
-#### Calculation of Flop ratio
+Assignment 1: Calculation of Flop ratio
 
 From the report we can see that
 Number of cells = 14876
-
 Number of flip flops (sky130_fd_sc_hd__dfxtp_2) = 1613
 
 Flip flop ratio =1613/14876 = 10.84 %
 ```
-Once the synthesis is complete, `runs/` folder would be created inside the `picorv32a` folder as shown. The contents inside the picorv32/runs/28-01_10-00/tmp will be required by OpenLANE at various stages. The `merged.lef` in the `tmp` folder is the LEF file created during the design preparation. This LEF file contains the tech and cell LEF information.
 
-<div align="center">
-<img width="735" alt="CELL LEF AND TECH LEF" src="https://user-images.githubusercontent.com/104830557/215262938-95fb2ef0-9aea-49d4-a48b-81e8a71863a3.png">
-</div>
-
-```
-‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00$ ls -ltr
-total 52
--rwxr-xr-x  1 prajwalita17 prajwalita17   170 Jun 28  2021 PDK_SOURCES
-drwxr-xr-x 11 prajwalita17 prajwalita17  4096 Jan 28 15:30 results
-drwxr-xr-x 11 prajwalita17 prajwalita17  4096 Jan 28 15:30 reports
--rw-r--r--  1 prajwalita17 prajwalita17    15 Jan 28 15:30 OPENLANE_VERSION
-drwxr-xr-x 11 prajwalita17 prajwalita17  4096 Jan 28 15:30 logs
-drwxr-xr-x 11 prajwalita17 prajwalita17  4096 Jan 28 15:49 tmp
--rw-r--r--  1 prajwalita17 prajwalita17  2862 Jan 28 15:50 cmds.log
--rw-r--r--  1 prajwalita17 prajwalita17 21018 Jan 28 15:50 config.tcl
-prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00$ ls tmp -ltr
-total 23212
--rwxr-xr-x 1 prajwalita17 prajwalita17      202 Jun 28  2021 tracks_copy.info
--rw-r--r-- 1 prajwalita17 prajwalita17  2264912 Jan 28 15:30 merged.lef
--rw-r--r-- 1 prajwalita17 prajwalita17       33 Jan 28 15:30 met_layers_list.txt
--rw-r--r-- 1 prajwalita17 prajwalita17  2264912 Jan 28 15:30 merged_unpadded.lef
--rwxr-xr-x 1 prajwalita17 prajwalita17     6975 Jan 28 15:30 trimmed.lib.exclude.list
--rw-r--r-- 1 prajwalita17 prajwalita17  6291198 Jan 28 15:30 trimmed.lib
-drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 routing
-drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 placement
-drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 magic
-drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 lvs
-drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 klayout
-drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 floorplan
-drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 cvc
-drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 cts
--rw-r--r-- 1 prajwalita17 prajwalita17 12892372 Jan 28 15:49 sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib
-drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:49 synthesis
-```
 
 
 ## Floorplanning
