@@ -36,7 +36,7 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 ### Day 5 - Final steps for RTL2GDS
 
 - Routing and design rule check (DRC)
-- PNR interactive flow tutorialn of what this project does and who it's for
+- PNR interactive flow tutorial of what this project does and who it's for
 - [LAB - DAY 5](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
 
 ------------------------------------------------------------------------------------------
