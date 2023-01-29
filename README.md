@@ -1,11 +1,44 @@
 # Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK
 This repository contains a step by step procedure to the complete RTL2GDSII flow of PICORV32A RISC-V core design using open-source EDA tool OpenLANE and Google-Skywater’s first manufacturable open source 130nm PDK.
+This repository contains the learnings from Advanced Physical Design Using OpenLANE / SKY130 workshop. It is primarily foucused on a complete RTL2GDS flow of PICORV32A RISC-V core designwith the help of open-source EDA tool OpenLANE and Google-SkyWater’s first manufacturable open source 130nm process design kit (pdk). 
+
+## Contents
+### [Day1 – Inception of open-source EDA, OpenLANE and Sky130 PDK](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLane-and-Skywater-130/edit/main/README.md#inception-of-open-source-eda-openlane-and-sky130-pdk)
+
+- [How to talk to computers](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLane-and-Skywater-130/edit/main/README.md#how-to-talk-to-computers)
+- [SoC design and OpenLANE](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLane-and-Skywater-130/edit/main/README.md#soc-design-and-openlane)
+- [Starting RISC-V SoC Reference design](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLane-and-Skywater-130/edit/main/README.md#starting-risc-v-soc-reference-design)
+- [Get familiar to open-source EDA tools](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLane-and-Skywater-130/edit/main/README.md#get-familiar-to-open-source-eda-tools)
+- [LAB- DAY 1](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-1-1)
+
+### Day 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
+
+- Chip Floor planning considerations
+- Library Binding and Placement
+- Cell design and characterization flows
+- General timing characterization parameters
+
+### Day 3 - Design and characterize one library cell using Magic Layout tool and ngspice
+
+- Labs for CMOS inverter ngspice simulations
+- Inception of Layout – CMOS fabrication process
+- Sky130 Tech File Labs
+
+### Day 4 - Pre-layout timing analysis and importance of good clock tree
+
+- Timing modelling using delay tables
+- Timing analysis with ideal clocks using openSTA
+- Clock tree synthesis TritonCTS and signal integrity
+- Timing analysis with real clocks using openSTA
+
+### Day 5 - Final steps for RTL2GDS
+
+- Routing and design rule check (DRC)
+- PNR interactive flow tutorialn of what this project does and who it's for
+- 
 ### LAB WORK
 ### DAY 1
-#### - [Understanding the File Structure](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#understanding-the-file-structure)
-#### - [OpenLANE Initialization](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#openlane-initialization)
-#### - [Design Preparation](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-preparation)
-#### - [Design Synthesis and Results](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-synthesis-and-results)
+
 
 ### DAY 2
 #### - [Understanding the Floorplan variables and settings]()
@@ -13,14 +46,16 @@ This repository contains a step by step procedure to the complete RTL2GDSII flow
 #### - [Floorplan in MAGIC]()
 #### - [Design Synthesis and Results](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-synthesis-and-results)
 -----------------------------------------------------------------------------------------------------------------------------------
-## DAY 1
-## Understanding the File Structure
+### DAY 1
+### Understanding the File Structure
 -----------------------------------------------------------------------------------------------------------------------------------
 All the Process Design Kits(PDKs) are listed under the pdks/ directory. We use Sky130A PDK for this design. There are other open-source PDKs and related files are also available in the pdk/ directory. The location of the PDK directory is given of $PDK_ROOT variable.
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir$ ls
 openlane  pdks
 ```
+The contents of `openlane/` files get modified or updated at each stage of the flow.
+
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane$ ls -ltr
 total 132
@@ -41,6 +76,8 @@ drwxr-xr-x  3 prajwalita17 prajwalita17  4096 Jan 24 07:48 regression_results
 drwxr-xr-x 15 prajwalita17 prajwalita17  4096 Jan 24 07:48 scripts
 drwxr-xr-x  2 prajwalita17 prajwalita17  4096 Jan 26 19:37 configuration
 ```
+The `design` contains many opensource RTL designs. PicoRV32a has been used as our reference design for RTL2GDS OpenLANE flow. We use `sky130A_sky130_fd_sc_hd__` as our default library.
+
 ```
 ‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a$ ls -ltr
 total 32
@@ -53,7 +90,7 @@ total 32
 drwxr-xr-x 6 prajwalita17 prajwalita17 4096 Jan 26 16:52 runs
 drwxr-xr-x 2 prajwalita17 prajwalita17 4096 Jan 28 10:54 src
 ```
-The `config.tcl` show the values set for some important variables. The `sky130A_sky130_fd_sc_hd_config.tcl` has a higher priority as compared to `config.tcl` file. Hence the values for variables in `sky130A_sky130_fd_sc_hd_config.tcl` will overwrite those in the `config.tcl`. For example, the `CLOCK_PERIOD` used in the flow will be `12ns` instead of `5 ns`.
+The `config.tcl` shows the values set for some important variables. The `sky130A_sky130_fd_sc_hd_config.tcl` has a higher priority as compared to `config.tcl` file. Hence the values for variables in `sky130A_sky130_fd_sc_hd_config.tcl` will overwrite those in the `config.tcl`. For example, the `CLOCK_PERIOD` used in the flow will be `12ns` instead of `5 ns`.
 ```
 ‌‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a$ less config.tcl
 
@@ -253,7 +290,7 @@ drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:30 cts
 -rw-r--r-- 1 prajwalita17 prajwalita17 12892372 Jan 28 15:49 sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib
 drwxr-xr-x 2 prajwalita17 prajwalita17     4096 Jan 28 15:49 synthesis
 ```
- ### Design Synthesis and Results
+### Design Synthesis and Results
  
 The next step in OpenLANE flow is RTL Synthesis of the design(picorv32a) loaded. This is done using the following command.
    `run_synthesis`
@@ -370,48 +407,7 @@ Flip flop ratio =1613/14876 = 10.84 %
 ### DAY 2
 ### Floorplanning
 -----------------------------------------------------------------------------------------------------------------------------------
-Once the synthesis step is done, the next step is floorplan. Before `run_floorplan` let us look at the list variables rof equired for the floorplan step and their default values.
-| Variable      | Description                                                   |
-|---------------|---------------------------------------------------------------|
-| `FP_CORE_UTIL`  | The core utilization percentage. <br> (Default: `50` percent)|
-| `FP_ASPECT_RATIO`  | The core's aspect ratio (height / width). <br> (Default: `1`)|
-| `FP_SIZING`  | Whether to use relative sizing by making use of `FP_CORE_UTIL` or absolute one using `DIE_AREA`. <br> (Default: `"relative"` - accepts "absolute" as well)|
-| `DIE_AREA`  | Specific die area to be used in floorplanning. Specified as a 4-corner rectangle. Units in mm <br> (Default: unset)|
-| `FP_IO_HMETAL`  | The metal layer on which to place the io pins horizontally (top and bottom of the die). <br>(Default: `4`)|
-| `FP_IO_VMETAL`  | The metal layer on which to place the io pins vertically (sides of the die) <br> (Default: `3`)|
-| `FP_IO_MODE`  | Decides the mode of the random IO placement option. 0=matching mode, 1=random equidistant mode <br> (Default: `1`)|
-| `FP_WELLTAP_CELL`  | The name of the welltap cell during welltap insertion. |
-| `FP_ENDCAP_CELL`  | The name of the endcap cell during endcap insertion. |
-| `FP_PDN_VOFFSET`  | The offset of the vertical power stripes on the metal layer 4 in the power distribution network <br> (Default: `16.32`) |
-| `FP_PDN_VPITCH`  | The pitch of the vertical power stripes on the metal layer 4 in the power distribution network <br> (Default: `153.6`) |
-| `FP_PDN_HOFFSET`  | The offset of the horizontal power stripes on the metal layer 5 in the power distribution network <br> (Default: `16.65`) |
-| `FP_PDN_HPITCH`  | The pitch of the horizontal power stripes on the metal layer 5 in the power distribution network <br> (Default: `153.18`) |
-| `FP_PDN_AUTO_ADJUST` | Decides whether or not the flow should attempt to re-adjust the power grid, in order for it to fit inside the core area of the design, if needed. <br> 1=enabled, 0 =disabled (Default: `1`) |
-| `FP_TAPCELL_DIST`  | The horizontal distance between two tapcell columns <br> (Default: `14`) |
-| `FP_IO_VEXTEND`  |  Extends the vertical io pins outside of the die by the specified units<br> (Default: `-1` Disabled) |
-| `FP_IO_HEXTEND`  |  Extends the horizontal io pins outside of the die by the specified units<br> (Default: `-1` Disabled) |
-| `FP_IO_VLENGTH`  | The length of the vertical IOs in microns. <br> (Default: `4`) |
-| `FP_IO_HLENGTH`  | The length of the horizontal IOs in microns. <br> (Default: `4`) |
-| `FP_IO_VTHICKNESS_MULT`  | A multiplier for vertical pin thickness. Base thickness is the pins layer minwidth <br> (Default: `2`) |
-| `FP_IO_HTHICKNESS_MULT`  | A multiplier for horizontal pin thickness. Base thickness is the pins layer minwidth <br> (Default: `2`) |
-| `BOTTOM_MARGIN_MULT`     | The core margin, in multiples of site heights, from the bottom boundary. <br> (Default: `4`) |
-| `TOP_MARGIN_MULT`        | The core margin, in multiples of site heights, from the top boundary. <br> (Default: `4`) |
-| `LEFT_MARGIN_MULT`       | The core margin, in multiples of site widths, from the left boundary.  <br> (Default: `12`) |
-| `RIGHT_MARGIN_MULT`      | The core margin, in multiples of site widths, from the right boundary.   <br> (Default: `12`) |
-| `FP_PDN_CORE_RING` | Enables adding a core ring around the design. More details on the control variables in the pdk configurations documentation. 0=Disable 1=Enable. <br> (Default: `0`) |
-| `FP_PDN_ENABLE_RAILS` | Enables the creation of rails in the power grid. 0=Disable 1=Enable. <br> (Default: `1`) |
-| `FP_PDN_CHECK_NODES` | Enables checking for unconnected nodes in the power grid. 0=Disable 1=Enable. <br> (Default: `1`) |
-| `FP_HORIZONTAL_HALO` | Sets the horizontal halo around the tap and decap cells. The value provided is in microns. <br> Default: `10` |
-| `FP_VERTICAL_HALO` | Sets the vertical halo around the tap and decap cells. The value provided is in microns. <br> Default: set to the value of `FP_HORIZONTAL_HALO` |
-| `DESIGN_IS_CORE` | Controls the layers used in the power grid. Depending on whether the design is the core of the chip or a macro inside the core. 1=Is a Core, 0=Is a Macro <br> (Default: `1`)|
-| `FP_PIN_ORDER_CFG` | Points to the pin order configuration file to set the pins in specific directions (S, W, E, N). Check this [file][0] as an example. If not set, then the IO pins will be placed based on one of the other methods depending on the rest of the configurations. <br> (Default: NONE)|
-| `FP_CONTEXT_DEF` | Points to the parent DEF file that includes this macro/design and uses this DEF file to determine the best locations for the pins. It must be used with `FP_CONTEXT_LEF`, otherwise it's considered non-existing. If not set, then the IO pins will be placed based on one of the other methods depending on the rest of the configurations. <br> (Default: NONE)|
-| `FP_CONTEXT_LEF` | Points to the parent LEF file that includes this macro/design and uses this LEF file to determine the best locations for the pins. It must be used with `FP_CONTEXT_DEF`, otherwise it's considered non-existing. If not set, then the IO pins will be placed based on one of the other methods depending on the rest of the configurations. <br> (Default: NONE)|
-| `FP_DEF_TEMPLATE` | Points to the DEF file to be used as a template when running `apply_def_template`. This will be used to exctract pin names, locations, shapes -excluding power and ground pins- as well as the die area and replicate all this information in the `CURRENT_DEF`. |
-| `VDD_NETS` | Specifies the power nets/pins to be used when creating the power grid for the design. |
-| `GND_NETS` | Specifies the ground nets/pins to be used when creating the power grid for the design. |
-| `SYNTH_USE_PG_PINS_DEFINES` | Specifies the power guard used in the verilog source code to specify the power and ground pins. This is used to automatically extract `VDD_NETS` and `GND_NET` variables from the verilog, with the assumption that they will be order `inout vdd1, inout gnd1, inout vdd2, inout gnd2, ...`. |
-
+Once the synthesis step is done, the next step is floorplan. Before `run_floorplan` let us look at the list of some of the variables required for the floorplan step and their default values.
 The `floorplan.tcl` file contains the default values of variables required for the floorplan. For example the core utilization ratio `FP_CORE_UTIL` can be seen as 50%. 
 
 ```
@@ -459,12 +455,12 @@ The values in `floorplan.tcl` will be overwritten by the values set by `picorv32
 `picorv32a/sky130_fd_sc_hd_config.tcl` has the highest priority and hence it's important to make sure this file has the intended values for the variables.
 Once we make sure the variables for floorplan are set, we run the floorplan using the `run_floorplan` command.
                 
-```bash
+```
 %run_floorplan
 [INFO]: PDN generation was successful.
 [INFO]: Changing layout from /openLANE_flow/designs/picorv32a/runs/28-01_10-00/results/floorplan/picorv32a.floorplan.def to /openLANE_flow/designs/picorv32a/runs/28-01_10-00/tmp/floorplan/7-pdn.def
-
 ```
+The contents of `4-ioPlacer.log` can be seen here.
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00/logs/floorplan$ vim 4-ioPlacer.log 
 
@@ -496,7 +492,7 @@ lrwxrwxrwx 1 prajwalita17 prajwalita17      29 Jan 28 17:45 merged_unpadded.lef 
 -rw-r--r-- 1 prajwalita17 prajwalita17 2438886 Jan 28 17:47 picorv32a.floorplan.def
 -rw-r--r-- 1 prajwalita17 prajwalita17  254571 Jan 28 17:47 picorv32a.floorplan.def.png
 ```
-The partial content of `picorv32a.floorplan.def` is as shown. 
+The partial content of `picorv32a.floorplan.def` is as shown. The DEF file gets updated at each step of the flow while LEF remains the same.
 
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00/results/floorplan$ less picorv32a.floorplan.def
@@ -525,7 +521,10 @@ Die area = 662.870 * 673.590
 	 = 446502.6033 sq. microns
 ```
 Let us view the floorplan in magic using the following command. 
-For this we need the `tech file`, `LEf file` and `DEF file`. `/home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech` is the location tech file. `/home/kunalg123/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/tmp/merged.lef` is the location of the LEF file and DEF file is present in the floorplan folder.
+For this we need the `tech file`, `LEf file` and `DEF file`. 
+`~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech` is the location of the `tech file`. `~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/tmp/merged.lef` is the location of the `LEF file`.
+`~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/results/floorplan` is the location of the `DEF file`.
+
 ```
 ‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/results/floorplan$ magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 ```
@@ -545,9 +544,10 @@ For this we need the `tech file`, `LEf file` and `DEF file`. `/home/kunalg123/De
 <div align="center">
 <img width="602" alt="unplaced cells" src="https://user-images.githubusercontent.com/104830557/215285581-c7d9f8eb-344c-4363-8f36-f9ddc84df41d.png">
 </div>
-
+______________________________________________________________________________________________________________________________________________________________________
 ### Day 3
-## Cell Characterization
+### Cell Characterization
+_______________________________________________________________________________________________________________________________________________________________________
 **Cell characterization** is the process of measuring the electrical characteristics of a digital logic cell. This includes measuring the cell's performance parameters such as delay, power consumption, and noise margins, under different conditions such as different input patterns and process variations. The results of cell characterization are used to create a library of cell models that can be used in the design and simulation of digital circuits.
 
 During the characterization process, the cell's input and output waveforms are measured using testbenches and the results are used to create a model that describes the cell's behavior under different conditions. The model is then used to predict the cell's performance in the overall circuit design, allowing designers to optimize the circuit's performance and ensure that it meets the required specifications. Cell characterization is an important step in the VLSI design flow, as it allows designers to create accurate models of the cells that will be used in the final circuit, and thus can help to improve the yield and reliability of the final product.
