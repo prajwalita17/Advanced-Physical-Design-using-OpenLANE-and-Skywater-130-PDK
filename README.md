@@ -642,7 +642,7 @@ run
 .end
 ```
 
-```‌
+```‌bash
 ngspice 1 -> plot y vs time a
 ```
 
@@ -656,15 +656,12 @@ ngspice 1 -> plot y vs time a
 .option scale=0.01u
 .include ./libs/pshort.lib
 .include ./libs/nshort.lib
-
 //.subckt sky130_inv A Y VPWR VGND
 M0 Y A VGND VGND nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
 M1 Y A VPWR VPWR pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=17 l=23
 VDD VPWR 0 3.3V
 VSS VGND 0 0V
 Va A VGND PULSE(0 3.3V 0 0.1ns 0.1ns 2ns 4ns)
-
-
 C0 A Y 0.05fF
 C1 VPWR Y 0.11fF
 C2 VPWR A 0.07fF
