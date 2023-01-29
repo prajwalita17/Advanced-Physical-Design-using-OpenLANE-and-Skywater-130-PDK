@@ -722,7 +722,7 @@ Running ngspice simulations and measuring the parameters for inverter circuit fo
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ### DAY 4
-### Extraction of LEF of Custom Cell, Placement and Clock Tree Synthesis
+### Extraction of LEF of Custom Cell and Placement
 -----------------------------------------------------------------------------------------------------------------------------------
 
 ### Extracting LEF file from MAGIC file
@@ -791,13 +791,20 @@ We can see the cell by zooming by pressing `z`. We can also see the custom cell 
 The expanded version of the custom cell is as shown.
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_31_28](https://user-images.githubusercontent.com/104830557/215358883-da163cd4-a859-404a-80ed-976d456cebea.png)
 
+-----------------------------------------------------------------------------------------------------------------------------------
+### DAY 5
+### Clock Tree Synthesis and Routing
+-----------------------------------------------------------------------------------------------------------------------------------
+
 We continue the flow by running the following commands.
 `% gen_pdn`
 `% run_cts`
 `% run_routing`
-
+-------------------------------------------
 ### Acknowledgements
+-------------------------------------------
 [Kunal Ghosh](https://github.com/kunalg123)
+
 [Nikson Jose](https://github.com/nickson-jose)
 
 
