@@ -641,3 +641,11 @@ run
 .endc
 .end
 ```
+```‌
+ngspice 1 -> plot y vs time a
+```
+<div align="center">
+<img width="299" alt="inv tran" src="https://user-images.githubusercontent.com/104830557/215303389-c5b686ea-202b-47cf-84ab-7bae3bae4db6.png">
+</div>
+
+‌‌
