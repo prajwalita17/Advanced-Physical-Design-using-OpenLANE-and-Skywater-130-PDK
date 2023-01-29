@@ -575,6 +575,7 @@ prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openla
 <div align="center">
 <img width="737" alt="spiceextract" src="https://user-images.githubusercontent.com/104830557/215286745-8feb5cfa-fd97-43a0-8702-fed85d8e96c2.png">
 </div>
+
 ```‌
 ‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ls -ltr
 total 188
@@ -588,6 +589,7 @@ drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 libs
 -rw-rw-r-- 1 prajwalita17 prajwalita17   1425 Jan 29 00:40 sky130_inv.ext
 -rw-rw-r-- 1 prajwalita17 prajwalita17    353 Jan 29 00:41 sky130_inv.spice
 ```
+
 ```
 Circuit: * spice3 file created from sky130_inv.ext - technology: sky130a
 
@@ -598,7 +600,6 @@ Warning: va: no DC value, transient time 0 value used
 
 Initial Transient Solution
 --------------------------
-
 Node                                   Voltage
 ----                                   -------
 y                                          3.3
@@ -609,11 +610,10 @@ va#branch                                    0
 vss#branch                         3.32412e-12
 vdd#branch                        -3.32413e-12
 
-
-
 No. of Data Rows : 145
 ngspice 1 -> 
 ```
+
 ```
 * SPICE3 file created from sky130_inv.ext - technology: sky130A
   
@@ -642,7 +642,7 @@ run
 .end
 ```
 
-```‌bash
+```‌
 ngspice 1 -> plot y vs time a
 ```
 
