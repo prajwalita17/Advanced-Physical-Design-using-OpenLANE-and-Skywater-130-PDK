@@ -548,6 +548,9 @@ For this we need the `tech file`, `LEf file` and `DEF file`. `/home/kunalg123/De
 
 ### Day 3
 ## Cell Characterization
+**Cell characterization** is the process of measuring the electrical characteristics of a digital logic cell. This includes measuring the cell's performance parameters such as delay, power consumption, and noise margins, under different conditions such as different input patterns and process variations. The results of cell characterization are used to create a library of cell models that can be used in the design and simulation of digital circuits.
+
+During the characterization process, the cell's input and output waveforms are measured using testbenches and the results are used to create a model that describes the cell's behavior under different conditions. The model is then used to predict the cell's performance in the overall circuit design, allowing designers to optimize the circuit's performance and ensure that it meets the required specifications. Cell characterization is an important step in the VLSI design flow, as it allows designers to create accurate models of the cells that will be used in the final circuit, and thus can help to improve the yield and reliability of the final product.
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane$git clone https://github.com/nickson-jose/vsdstdcelldesign.git
 ```
@@ -686,4 +689,40 @@ ngspice 1 -> plot y vs time a
 <div align="center">
 <img width="302" alt="inv tran with cl 2fF" src="https://user-images.githubusercontent.com/104830557/215303687-d9f4cb79-5f8d-450e-b3fb-cf0f7062e1dc.png">
 </div>
+
+To characerize the cell, we find the following parameters.
+- Rise time - The time taken for the output to rise from 20% to 80% of its final value.
+- Fall time - The time taken for the output to fall from 20% to 80% of its final value.
+- Rise cell delay - The 
+- Fall cell delay
+
+Let us calculate these parameters for inv cell with output capacitance of 2fF.
+
+Running ngspice simulations and measuring the parameters for inverter circuit for the two cases a. $W_p$ = 2 $W_n$ and b. $W_p$ = 3 $W_n$, we get the following results.
+| Parameter     | Inverter circuit with $W_p$ = 2 $W_n$|           Inverter circuit with $W_p$ = 3 $W_n$              |
+|---------------|--------------------------------------|-------------------------|
+| | The core utilization percentage. <br> (Default: `50` percent)|
+| `FP_ASPECT_RATIO`  | The core's aspect ratio (height / width). <br> (Default: `1`)|
+| `FP_SIZING`  | Whether to use relative sizing by making use of `FP_CORE_UTIL` or absolute one using `DIE_AREA`. <br> (Default: `"relative"` - accepts "absolute" as well)|
+| `DIE_AREA`  | Specific die area to be used in floorplanning. Specified as a 4-corner rectangle. Units in mm <br> (Default: unset)|
+
+
+
+What is the effect of increase in W/L ratio on fall cell delay ?
+
+An increase in the width-to-length (W/L) ratio of a MOSFET transistor typically results in a decrease in the fall time of the cell delay. This is because a larger W/L ratio leads to a larger transconductance, which in turn leads to a faster rate of change in the drain current, and thus a faster fall time. However, it is important to note that there are other factors that can affect the fall time of a cell, such as the parasitic capacitances and the resistance of the interconnects, and these factors should also be considered when designing a circuit.
+
+What is the effect of increase in W/L ratio on rise cell delay ?
+An increase in the width-to-length (W/L) ratio of a MOSFET transistor will typically result in an increase in the rise time of the cell delay. This is because a larger W/L ratio leads to a larger parasitic drain-to-source capacitance, which must be charged up before a significant increase in the drain current can occur. Therefore, the larger parasitic capacitance leads to a slower rate of change in the drain current, and thus a slower rise time. However, as with fall time, it is important to note that other factors, such as the resistance of the interconnects, can affect the rise time of a cell, so these should also be considered when designing a circuit.
+
+What is the effect of increase in W/L ratio on rise time ?
+An increase in the width-to-length (W/L) ratio of a MOSFET transistor will typically result in a decrease in the rise time. This is because a larger W/L ratio leads to a larger transconductance, which in turn leads to a faster rate of change in the drain current. This results in a faster rise time since it takes less time for the gate-source voltage to charge up the gate-drain capacitance. Additionally, as the W/L ratio increases, the drain-source resistance decreases resulting in a faster current flow and thus faster rise time. However, it is important to keep in mind that other factors, such as the parasitic capacitances and the resistance of the interconnects, can also affect the rise time, so these should also be considered when designing a circuit.
+
+What is the effect of increase in W/L ratio on fall time ?
+An increase in the width-to-length (W/L) ratio of a MOSFET transistor will typically result in a decrease in the fall time. This is because a larger W/L ratio leads to a larger transconductance, which in turn leads to a faster rate of change in the drain current. This results in a faster fall time since it takes less time for the drain current to decrease when the gate-source voltage is decreased. Additionally, as the W/L ratio increases, the drain-source resistance decreases resulting in a faster current flow and thus faster fall time. However, it is important to keep in mind that other factors, such as the parasitic capacitances and the resistance of the interconnects, can also affect the fall time, so these should also be considered when designing a circuit.
+
+
+
+
+
 
