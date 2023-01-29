@@ -705,7 +705,7 @@ To characerize the cell, we find the following parameters.
 
 Let us calculate these parameters for inv cell with output capacitance of 2fF.
 
-Running ngspice simulations and measuring the parameters for inverter circuit for the two cases a. $W_p$ = 2 $W_n$ and b. $W_p$ = 3 $W_n$, we get the following results.
+Running ngspice simulations and measuring the parameters for inverter circuit for the two cases a. $W_p$ = 2 $W_n$ and b. $W_p$ = 4 $W_n$, we get the following results.
 | Parameter     | Inverter circuit with $W_p$ = 2 $W_n$|           Inverter circuit with $W_p$ = 4 $W_n$              |
 |---------------|--------------------------------------|-------------------------|
 |Rise Time | 147.69 ps|48.93 ps|
