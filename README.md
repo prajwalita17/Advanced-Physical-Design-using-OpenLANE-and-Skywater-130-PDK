@@ -741,66 +741,56 @@ The inverter design can be saved with a custom name in the `tkcon 2.3 Main` cons
 `save sky_130vsdinv.mag`
 `lef write` saves `sky_130vsdinv.lef` file in the vsdstdcelldesign folder.
 
-Copy `my_base.sdc` `from vsdstdcell/extras` to `openlane/designs/picorv32a/src`. Contents of `src` folder will be 
-
-![68 183 188 194 - Remote Desktop Connection 30-01-2023 03_07_53](https://user-images.githubusercontent.com/104830557/215357060-68e482a5-9ce8-42c9-a1cd-b8c219dddc83.png)
-
-vsdstdcelldesign/libs/sky130_fd_sc_hd__typical.lib contains the sky_130vsdinv cell.
+Copy `my_base.sdc` `from vsdstdcell/extras` to `openlane/designs/picorv32a/src`. 
+`vsdstdcelldesign/libs/sky130_fd_sc_hd__typical.lib` contains the `sky_130vsdinv cell` as shown. 
 
 ![typical lib](https://user-images.githubusercontent.com/104830557/215324433-a018331d-b142-404a-ab36-cc095a7806f0.png)
 
-copy the libs/sky130_fd_sc_hd__typical.lib. sky130_fd_sc_hd__fast.lib. sky130_fd_sc_hd__slow.lib to src folder
-31
-​
-32
-We modify the config.tcl file by adding these lines to existing config.tcl file.
-33
+copy the `libs/sky130_fd_sc_hd__typical.lib`. `sky130_fd_sc_hd__fast.lib`. `sky130_fd_sc_hd__slow.lib` to `src` folder. Contents of `src` folder will be 
+
+![src](https://user-images.githubusercontent.com/104830557/215357103-46b0213e-1419-404d-84c2-5c2ffece6535.png)
+
+We then modify the config.tcl file by adding these lines to existing config.tcl file.
+
 ```
-34
 set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
-35
 set ::env(LIB_MIN) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
-36
 set ::env(LIB_MAX) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
-37
 set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
-38
-​
-39
 set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
-40
 ```
-41
+
+We now run the complete flow starting from invoking `docker` to `routing`. The flow will now include the custom cell `sky_130vsdinv`
+
+Steps for the complete flow.
+`prajwalita17@vsd-pd-workshop-05:/home/kunalg123/Desktop/work/tools/openlane_working_dir/openlane$ docker`
+`bash-4.2$ ./flow.tcl -interative`
+`% package require openlane 0.9`
+`% prep -design picorv32a`
+`% set lefs [glob $::env(DESIGN_DIR)/src/*.lef]`
+`% add_lefs -src $lefs`
+`% run_synthesis`
+
 ```
-42
-To run the complete flow while including the custom cell `sky_130vsdinv cell.lef`, 
-43
-docker
-44
-bash-4.2$ ./flow.tcl -interactive
-No file chosen
-Attach files by dragging & dropping, selecting or pasting them.
-Styling with Markdown is supported
-@prajwalita17
-Commit changes
-Commit summary
-Create README.md
-Optional extended description
-Add an optional extended description…
- Commit directly to the main branch.
- Create a new branch for this commit and start a pull request. Learn more about pull requests.
- 
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+set ::env(SYNTH_STRATEGY) 0
+set ::env(SYNTH_BUFFERING) 0
+set ::env(SYNTH_SIZING) 0
+```
+The negative slack can be fixed by setting appropriate values of variables. Reducing maximum fanout or replacing cells with lower drive strength can be replaced with those having higher drive strength. These changed may have a negative impact on area. 
+
+`% init_floorplan`
+`% place_io`
+`% global_placement_or`
+`% detailed_placement`
+`% tap_decap_or`
+`% detailed_placement`
+`% gen_pdn`
+`% run_cts`
+`% run_routing`
+
+### Acknowledgements
+[Kunal Ghosh](https://github.com/kunalg123)
+[Nikson Jose](https://github.com/nickson-jose)
+
+
+
