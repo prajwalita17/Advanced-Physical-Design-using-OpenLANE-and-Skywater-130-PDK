@@ -8,7 +8,7 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 - SoC design and OpenLANE
 - Starting RISC-V SoC Reference design
 - Get familiar to open-source EDA tools
-- [LAB- DAY 1](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-1-1)
+- [LAB- DAY 1](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-1)
 
 ### Day 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
 
@@ -16,14 +16,14 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 - Library Binding and Placement
 - Cell design and characterization flows
 - General timing characterization parameters
-- [LAB - DAY 2](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
+- [LAB - DAY 2](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2)
 
 ### Day 3 - Design and characterize one library cell using Magic Layout tool and ngspice
 
 - Labs for CMOS inverter ngspice simulations
 - Inception of Layout – CMOS fabrication process
 - Sky130 Tech File Labs
-- [LAB - DAY 3](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
+- [LAB - DAY 3](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-3)
 
 ### Day 4 - Pre-layout timing analysis and importance of good clock tree
 
@@ -31,13 +31,13 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 - Timing analysis with ideal clocks using openSTA
 - Clock tree synthesis TritonCTS and signal integrity
 - Timing analysis with real clocks using openSTA
-- [LAB - DAY 4](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
+- [LAB - DAY 4](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-4)
 - 
 ### Day 5 - Final steps for RTL2GDS
 
 - Routing and design rule check (DRC)
 - PNR interactive flow tutorial of what this project does and who it's for
-- [LAB - DAY 5](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
+- [LAB - DAY 5](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-5)
 
 ------------------------------------------------------------------------------------------
 ### Inception of open-source EDA, OpenLANE and Sky130 PDK
@@ -100,11 +100,15 @@ Overall, PDKs are used to simplify the design process of integrated circuits by 
 PicoRV32 is designed based on the RISC-V instruction set architecture (ISA), which is a free and open standard for computer processors. The PicoRV32 core implements the RV32IMC instruction set, which includes 32 general-purpose registers, 32-bit instructions, and support for integer and control instructions.
 PicoRV32 is also a small and simple core, it is designed to have a small area and a small memory footprint, and it can be used in resource-constrained designs. It is also intended to be easily integrated into other designs, with a minimal number of external interfaces and a simple bus interface.
 It is customizable and configurable, it can be easily adapted to different use cases and applications. It includes support for various features such as interrupts, debug interfaces, and memory protection.
+<div align="center">
 ![RISCV](https://user-images.githubusercontent.com/104830557/214847962-d95e6d88-59a5-4fa8-9c8c-a4ad8a752c68.jpeg)
+</div>
 
 ## RTL2GDS OpenLANE Flow
 
+<div align="center">
 ![image](https://user-images.githubusercontent.com/104830557/214769763-47f149b8-d74b-4f58-966f-b114785f6814.png)
+</div>
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ### DAY 1
@@ -697,8 +701,9 @@ Let us calculate these parameters for inv cell with output capacitance of 2fF. R
 | Cell Rise Delay  | 121.62 ps|125.74 ps|
 | Cell Fall Delay  | 25.74 ps|16.78 ps|
 
+<div align="center">
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 10_36_22](https://user-images.githubusercontent.com/104830557/215354384-d77f5d3f-43a7-47fe-96d0-5d02f3a99015.png)
-
+</div>
 
 Similarly, running ngspice simulations and measuring the parameters for inverter circuit for the following two cases, we get the following results.
 - $W_p$ = 2 $W_n$
@@ -730,7 +735,10 @@ Running ngspice simulations and measuring the parameters for inverter circuit fo
 - The horizontal and vertical routing grid must intersect on the input and output ports (A and Y)
 - The width of the standard cell must be odd multiples of x pitch of the PR boundary.
 - The height of the standard cell is defined by the y pitch of the PR boundary. The hieght of all the standard cells in a design is same.
+
+<div align="center">
 ![gridonports](https://user-images.githubusercontent.com/104830557/215359055-408d9614-b192-4f34-9e3a-7953cc508ab7.png)
+</div>
 
 The inverter design can be saved with a custom name in the `tkcon 2.3 Main` console as shown. The custom cell would be identied as `sky_130vsdinv` after placement.
 `save sky_130vsdinv.mag`
@@ -739,12 +747,16 @@ The inverter design can be saved with a custom name in the `tkcon 2.3 Main` cons
 Copy `my_base.sdc` `from vsdstdcell/extras` to `openlane/designs/picorv32a/src`. 
 `vsdstdcelldesign/libs/sky130_fd_sc_hd__typical.lib` contains the `sky_130vsdinv cell` as shown. 
 
+<div align="center">
 ![typical lib](https://user-images.githubusercontent.com/104830557/215324433-a018331d-b142-404a-ab36-cc095a7806f0.png)
+</div>
 
 copy the `libs/sky130_fd_sc_hd__typical.lib`. `sky130_fd_sc_hd__fast.lib`. `sky130_fd_sc_hd__slow.lib` to `src` folder. Contents of `src` folder will be 
 
+<div align="center">
 ![src](https://user-images.githubusercontent.com/104830557/215357103-46b0213e-1419-404d-84c2-5c2ffece6535.png)
-
+	</div>
+	
 We then modify the config.tcl file by adding these lines to existing config.tcl file.
 
 ```
@@ -767,7 +779,9 @@ Steps for the complete flow.
 `% run_synthesis`
 The statitics after synthesis show that there are 1537 instances of the custom cell `sky_130vsdinv` in the design.
 
+<div align="center">
 ![stat](https://user-images.githubusercontent.com/104830557/215358688-19fbc2b4-930b-464e-9169-71372f8a0ce2.png)
+</div>
 
 ```
 set ::env(SYNTH_STRATEGY) 0
@@ -777,19 +791,31 @@ set ::env(SYNTH_SIZING) 0
 The negative slack can be fixed by setting appropriate values of variables. Reducing maximum fanout or replacing cells with lower drive strength can be replaced with those having higher drive strength. These changed may have a negative impact on area. 
 
 `% init_floorplan`
+
 `% place_io`
+
 `% global_placement_or`
+
 `% detailed_placement`
+
 `% tap_decap_or`
+
 `% detailed_placement`
 
+<div align="center">
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_13_22](https://user-images.githubusercontent.com/104830557/215358749-10273a4f-9e80-4e74-b6ca-b30b22089d96.png)
+	</div>
+	
 We can see the cell by zooming by pressing `z`. We can also see the custom cell in the cell manager.
-
+<div align="center">
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_23_55](https://user-images.githubusercontent.com/104830557/215358876-e8695a65-94d3-4ae3-bfbb-6d6e9d77d463.png)
-
+	</div>
+	
+<div align="center">
 The expanded version of the custom cell is as shown.
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_31_28](https://user-images.githubusercontent.com/104830557/215358883-da163cd4-a859-404a-80ed-976d456cebea.png)
+	</div>
+	
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ### DAY 5
@@ -798,11 +824,15 @@ The expanded version of the custom cell is as shown.
 
 We continue the flow by running the following commands.
 `% gen_pdn`
+
 `% run_cts`
+
 `% run_routing`
+
 -------------------------------------------
 ### Acknowledgements
 -------------------------------------------
+
 [Kunal Ghosh](https://github.com/kunalg123)
 
 [Nikson Jose](https://github.com/nickson-jose)
