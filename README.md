@@ -583,50 +583,19 @@ prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openla
 <img width="737" alt="spiceextract" src="https://user-images.githubusercontent.com/104830557/215286745-8feb5cfa-fd97-43a0-8702-fed85d8e96c2.png">
 </div>
 
-The `extract all`, `ext2spice cthresh 0 rthresh 0` and 'ext2spice`commands two files `sky130_inv.ext' and `sky130_inv.spice` in vsdstdcelldesign folder. The extracted `sky130_inv.spice` contains the connectivity information of the mosfets and the parasitic capacitances.
-```‌
-‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ls -ltr
-total 188
--rw-rw-r-- 1 prajwalita17 prajwalita17  13525 Jan 29 00:07 README.md
--rw-rw-r-- 1 prajwalita17 prajwalita17  11357 Jan 29 00:07 LICENSE
-drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 Images
-drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 extras
-drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 libs
--rw-rw-r-- 1 prajwalita17 prajwalita17   2716 Jan 29 00:07 sky130_inv.mag
--rwxr-xr-x 1 prajwalita17 prajwalita17 136710 Jan 29 00:11 sky130A.tech
--rw-rw-r-- 1 prajwalita17 prajwalita17   1425 Jan 29 00:40 sky130_inv.ext
--rw-rw-r-- 1 prajwalita17 prajwalita17    353 Jan 29 00:41 sky130_inv.spice
-```
-The extracted spice file is then modified to include the model files, input voltage values and transient/dc analysis commands as shown.
+The `extract all`, `ext2spice cthresh 0 rthresh 0` and `ext2spice` commands creates two files `sky130_inv.ext` and `sky130_inv.spice` in vsdstdcelldesign folder. 
+The extracted `sky130_inv.spice` contains the connectivity information of the mosfets and the parasitic capacitances. The extracted spice file is then modified to include the model files, input voltage values and transient/dc analysis commands as shown.
 
 ```
-* SPICE3 file created from sky130_inv.ext - technology: sky130A
-  
-.option scale=0.01u
-.include ./libs/pshort.lib
-.include ./libs/nshort.lib
-
-//.subckt sky130_inv A Y VPWR VGND
-M0 Y A VGND VGND nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
-M1 Y A VPWR VPWR pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=17 l=23
-VDD VPWR 0 3.3V
-VSS VGND 0 0V
-Va A VGND PULSE(0 3.3V 0 0.1ns 0.1ns 2ns 4ns)
-
-C0 A Y 0.05fF
-C1 VPWR Y 0.11fF
-C2 VPWR A 0.07fF
-C3 Y VGND 0.24fF
-C4 VPWR VGND 0.59fF
-//.ends
-.tran 1n 20n
-.control
-run
-.endc
-.end
+prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ vim sky130_inv.spice
 ```
+<div align="center">
+![wp24](https://user-images.githubusercontent.com/104830557/215353087-02ba5fcd-f20c-46c3-a4a1-28f30b8462d4.png)
+</div>
 
-
+```
+prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ngspice sky130_inv.spice
+```
 ```
 Circuit: * spice3 file created from sky130_inv.ext - technology: sky130a
 
@@ -648,54 +617,16 @@ vss#branch                         3.32412e-12
 vdd#branch                        -3.32413e-12
 
 No. of Data Rows : 145
-ngspice 1 -> 
-```
-
-
-
-```‌
 ngspice 1 -> plot y vs time a
 ```
-
 <div align="center">
-<img width="299" alt="inv tran" src="https://user-images.githubusercontent.com/104830557/215303389-c5b686ea-202b-47cf-84ab-7bae3bae4db6.png">
+![trantran](https://user-images.githubusercontent.com/104830557/215353823-56d71155-f764-4846-a856-d247f218a7ac.png)
 </div>
 
-|
-```
-* SPICE3 file created from sky130_inv.ext - technology: sky130A
-  
-.option scale=0.01u
-.include ./libs/pshort.lib
-.include ./libs/nshort.lib
-
-//.subckt sky130_inv A Y VPWR VGND
-M0 Y A VGND VGND nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
-M1 Y A VPWR VPWR pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=17 l=23
-VDD VPWR 0 3.3V
-VSS VGND 0 0V
-Va A VGND PULSE(0 3.3V 0 0.1ns 0.1ns 2ns 4ns)
-
-
-C0 A Y 0.05fF
-C1 VPWR Y 0.11fF
-C2 VPWR A 0.07fF
-C3 Y VGND 2fF
-C4 VPWR VGND 0.59fF
-//.ends
-.tran 1n 20n
-.control
-run
-.endc
-.end
-```
-
-```‌
-ngspice 1 -> plot y vs time a
-```
 
 <div align="center">
-<img width="302" alt="inv tran with cl 2fF" src="https://user-images.githubusercontent.com/104830557/215303687-d9f4cb79-5f8d-450e-b3fb-cf0f7062e1dc.png">
+<img width="302" alt="inv tran with cl 2fF" src="https://user-images.githubusercontent.com/104830557/215303687-d9f4cb79-5f8d-450e-b3fb-![Uploading trantran.png…]()
+cf0f7062e1dc.png">
 </div>
 
 To characerize the cell, we find the following parameters.
