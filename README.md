@@ -770,6 +770,9 @@ Steps for the complete flow.
 `% set lefs [glob $::env(DESIGN_DIR)/src/*.lef]`
 `% add_lefs -src $lefs`
 `% run_synthesis`
+The statitics after synthesis show that there are 1537 instances of the custom cell `sky_130vsdinv` in the design.
+
+![stat](https://user-images.githubusercontent.com/104830557/215358688-19fbc2b4-930b-464e-9169-71372f8a0ce2.png)
 
 ```
 set ::env(SYNTH_STRATEGY) 0
@@ -784,6 +787,16 @@ The negative slack can be fixed by setting appropriate values of variables. Redu
 `% detailed_placement`
 `% tap_decap_or`
 `% detailed_placement`
+
+![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_13_22](https://user-images.githubusercontent.com/104830557/215358749-10273a4f-9e80-4e74-b6ca-b30b22089d96.png)
+We can see the cell by zooming by pressing `z`. We can also see the custom cell in the cell manager.
+
+![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_23_55](https://user-images.githubusercontent.com/104830557/215358876-e8695a65-94d3-4ae3-bfbb-6d6e9d77d463.png)
+
+The expanded version of the custom cell is as shown.
+![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_31_28](https://user-images.githubusercontent.com/104830557/215358883-da163cd4-a859-404a-80ed-976d456cebea.png)
+
+We continue the flow by running the following commands.
 `% gen_pdn`
 `% run_cts`
 `% run_routing`
