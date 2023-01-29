@@ -728,14 +728,9 @@ Running ngspice simulations and measuring the parameters for inverter circuit fo
 ### Extracting LEF file from MAGIC file
 
 - The horizontal and vertical routing grid must intersect on the input and output ports (A and Y)
-
-![gridonports](https://user-images.githubusercontent.com/104830557/215318903-33eba1ed-cd2a-4bf9-add4-8fecc1151e9d.png)
-
 - The width of the standard cell must be odd multiples of x pitch of the PR boundary.
-
-![68 183 188 194 - Remote Desktop Connection 29-01-2023 15_32_45](https://user-images.githubusercontent.com/104830557/215319125-64b0191a-b12b-405c-ad15-39cd9d82099e.png)
-
-The height of the standard cell is defined by the y pitch of the PR boundary. The hieght of all the standard cells in a design is same.
+- The height of the standard cell is defined by the y pitch of the PR boundary. The hieght of all the standard cells in a design is same.
+![gridonports](https://user-images.githubusercontent.com/104830557/215359055-408d9614-b192-4f34-9e3a-7953cc508ab7.png)
 
 The inverter design can be saved with a custom name in the `tkcon 2.3 Main` console as shown. The custom cell would be identied as `sky_130vsdinv` after placement.
 `save sky_130vsdinv.mag`
