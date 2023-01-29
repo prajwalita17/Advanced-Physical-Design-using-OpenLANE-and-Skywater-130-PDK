@@ -619,27 +619,33 @@ vdd#branch                        -3.32413e-12
 No. of Data Rows : 145
 ngspice 1 -> plot y vs time a
 ```
-<div align="center">
-![trantran](https://user-images.githubusercontent.com/104830557/215353823-56d71155-f764-4846-a856-d247f218a7ac.png)
-</div>
+![wp24 - Paint 30-01-2023 02_01_54](https://user-images.githubusercontent.com/104830557/215354534-504f8b98-f861-4168-9190-930fa728d76b.png)
+
+![Snipping Tool 30-01-2023 01_59_52](https://user-images.githubusercontent.com/104830557/215354157-fadc120a-cffd-41a4-be3c-46b3fe972ba6.png)
+
+To characerize the cell, we find the following parameters for various W/L ratio or NMOS and PMOS.
+- Rise Time
+- Fall Time
+- Cell Rise Delay
+- Cell Fall Delay
+
+Let us calculate these parameters for inv cell with output capacitance of 2fF. Running ngspice simulations and measuring the parameters for inverter circuit for the following two cases, we get the following results.
+- $W_n$ = 2 $W_p$ 
+- $W_n$ = 3 $W_p$
+| Parameter     | Inverter circuit with $W_n$ = 2 $W_p$|           Inverter circuit with $W_n$ = 3 $W_p$              |
+|---------------|--------------------------------------|-------------------------|
+|Rise Time | 14.57 ps|151.34 ps|
+| Fall Time |43.39 ps|40.86 ps|
+| Cell Rise Delay  | 121.62 ps|125.74 ps|
+| Cell Fall Delay  | 25.74 ps|16.78 ps|
+
+![68 183 188 194 - Remote Desktop Connection 29-01-2023 10_36_22](https://user-images.githubusercontent.com/104830557/215354384-d77f5d3f-43a7-47fe-96d0-5d02f3a99015.png)
 
 
-<div align="center">
-<img width="302" alt="inv tran with cl 2fF" src="https://user-images.githubusercontent.com/104830557/215303687-d9f4cb79-5f8d-450e-b3fb-![Uploading trantran.png…]()
-cf0f7062e1dc.png">
-</div>
+Similarly, running ngspice simulations and measuring the parameters for inverter circuit for the following two cases, we get the following results.
+- $W_p$ = 2 $W_n$
+- $W_p$ = 4 $W_n$
 
-To characerize the cell, we find the following parameters.
-- Rise time - The time taken for the output to rise from 20% to 80% of its final value.
-- Fall time - The time taken for the output to fall from 20% to 80% of its final value.
-- Rise cell delay - The 
-- Fall cell delay
-
-
-
-Let us calculate these parameters for inv cell with output capacitance of 2fF.
-
-Running ngspice simulations and measuring the parameters for inverter circuit for the two cases a. $W_p$ = 2 $W_n$ and b. $W_p$ = 4 $W_n$, we get the following results.
 | Parameter     | Inverter circuit with $W_p$ = 2 $W_n$|           Inverter circuit with $W_p$ = 4 $W_n$              |
 |---------------|--------------------------------------|-------------------------|
 |Rise Time | 147.69 ps|48.93 ps|
@@ -648,18 +654,6 @@ Running ngspice simulations and measuring the parameters for inverter circuit fo
 | Cell Fall Delay  | 24.8 ps|70 ps|
 
 
-
-Skip to content
-Search or jump to…
-Pull requests
-Issues
-Codespaces
-Marketplace
-Explore
- 
-@prajwalita17 
-prajwalita17
-/
 DAY-4
 Private
 Cannot fork because you own this repository and are not a member of any organizations.
