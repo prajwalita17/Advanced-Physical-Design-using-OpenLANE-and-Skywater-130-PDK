@@ -632,7 +632,8 @@ To characerize the cell, we find the following parameters for various W/L ratio 
 Let us calculate these parameters for inv cell with output capacitance of 2fF. Running ngspice simulations and measuring the parameters for inverter circuit for the following two cases, we get the following results.
 - $W_n$ = 2 $W_p$ 
 - $W_n$ = 3 $W_p$
-| Parameter     | Inverter circuit with $W_n$ = 2 $W_p$|           Inverter circuit with $W_n$ = 3 $W_p$              |
+
+| Parameter     | Inverter circuit with $W_n$ = 2 $W_p$|  Inverter circuit with $W_n$ = 3 $W_p$              |
 |---------------|--------------------------------------|-------------------------|
 |Rise Time | 14.57 ps|151.34 ps|
 | Fall Time |43.39 ps|40.86 ps|
