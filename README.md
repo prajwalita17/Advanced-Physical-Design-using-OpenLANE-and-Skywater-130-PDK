@@ -720,67 +720,35 @@ Running ngspice simulations and measuring the parameters for inverter circuit fo
 | Cell Rise Delay  | 121.29 ps|28.025 ps|
 | Cell Fall Delay  | 24.8 ps|34.4 ps|
 
+-----------------------------------------------------------------------------------------------------------------------------------
+### DAY 4
+### Extraction of LEF of Custom Cell, Placement and Clock Tree Synthesis
+-----------------------------------------------------------------------------------------------------------------------------------
 
-
-
-# DAY-4
-2
-# Standard Cell 
-3
-​
-4
 ### Extracting LEF file from MAGIC file
-5
-​
-6
+
 - The horizontal and vertical routing grid must intersect on the input and output ports (A and Y)
-7
-​
-8
-- ![gridonports](https://user-images.githubusercontent.com/104830557/215318903-33eba1ed-cd2a-4bf9-add4-8fecc1151e9d.png)
-9
-​
-10
+
+![gridonports](https://user-images.githubusercontent.com/104830557/215318903-33eba1ed-cd2a-4bf9-add4-8fecc1151e9d.png)
+
 - The width of the standard cell must be odd multiples of x pitch of the PR boundary.
-11
-​
-12
+
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 15_32_45](https://user-images.githubusercontent.com/104830557/215319125-64b0191a-b12b-405c-ad15-39cd9d82099e.png)
-13
-​
-14
-The height of the standard cell must also be odd multiples of y pitch of the PR boundary.
-15
-```
-16
-save sky_130vsdinv.mag
-17
-```
-18
-​
-19
-```
-20
-lef write
-21
-```
-22
-`sky_130vsdinv.lef`
-23
-​
-24
-Copy 'my_base.sdc` `from vsdstdcell/extras` to `openlane/designs/picorv32a/src`
-25
-​
-26
+
+The height of the standard cell is defined by the y pitch of the PR boundary. The hieght of all the standard cells in a design is same.
+
+The inverter design can be saved with a custom name in the `tkcon 2.3 Main` console as shown. The custom cell would be identied as `sky_130vsdinv` after placement.
+`save sky_130vsdinv.mag`
+`lef write` saves `sky_130vsdinv.lef` file in the vsdstdcelldesign folder.
+
+Copy `my_base.sdc` `from vsdstdcell/extras` to `openlane/designs/picorv32a/src`. Contents of `src` folder will be 
+
+![68 183 188 194 - Remote Desktop Connection 30-01-2023 03_07_53](https://user-images.githubusercontent.com/104830557/215357060-68e482a5-9ce8-42c9-a1cd-b8c219dddc83.png)
+
 vsdstdcelldesign/libs/sky130_fd_sc_hd__typical.lib contains the sky_130vsdinv cell.
-27
-​
-28
+
 ![typical lib](https://user-images.githubusercontent.com/104830557/215324433-a018331d-b142-404a-ab36-cc095a7806f0.png)
-29
-​
-30
+
 copy the libs/sky130_fd_sc_hd__typical.lib. sky130_fd_sc_hd__fast.lib. sky130_fd_sc_hd__slow.lib to src folder
 31
 ​
