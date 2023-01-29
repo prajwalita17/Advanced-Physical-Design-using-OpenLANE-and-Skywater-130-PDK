@@ -650,6 +650,7 @@ ngspice 1 -> plot y vs time a
 <img width="299" alt="inv tran" src="https://user-images.githubusercontent.com/104830557/215303389-c5b686ea-202b-47cf-84ab-7bae3bae4db6.png">
 </div>
 
+
 ‌‌```
 * SPICE3 file created from sky130_inv.ext - technology: sky130A
   
@@ -674,6 +675,7 @@ run
 .endc
 .end
 ```
+
 
 <div align="center">
 <img width="302" alt="inv tran with cl 2fF" src="https://user-images.githubusercontent.com/104830557/215303687-d9f4cb79-5f8d-450e-b3fb-cf0f7062e1dc.png">
