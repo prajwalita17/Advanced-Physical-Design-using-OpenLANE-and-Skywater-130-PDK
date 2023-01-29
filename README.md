@@ -551,13 +551,11 @@ For this we need the `tech file`, `LEf file` and `DEF file`. `/home/kunalg123/De
 **Cell characterization** is the process of measuring the electrical characteristics of a digital logic cell. This includes measuring the cell's performance parameters such as delay, power consumption, and noise margins, under different conditions such as different input patterns and process variations. The results of cell characterization are used to create a library of cell models that can be used in the design and simulation of digital circuits.
 
 During the characterization process, the cell's input and output waveforms are measured using testbenches and the results are used to create a model that describes the cell's behavior under different conditions. The model is then used to predict the cell's performance in the overall circuit design, allowing designers to optimize the circuit's performance and ensure that it meets the required specifications. Cell characterization is an important step in the VLSI design flow, as it allows designers to create accurate models of the cells that will be used in the final circuit, and thus can help to improve the yield and reliability of the final product.
+
+We use the inverter design from `vsdstdcelldesign.git`. The command to clone and add the sky130A.tech file to vsdstdcell design folder is as shown.
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane$git clone https://github.com/nickson-jose/vsdstdcelldesign.git
-```
-```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic$ cp sky130A.tech ../../../../openlane/vsdstdcelldesign/
-```
-```
 ‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ls -ltr
 total 180
 -rw-rw-r-- 1 prajwalita17 prajwalita17  13525 Jan 29 00:07 README.md
@@ -568,6 +566,7 @@ drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 libs
 -rw-rw-r-- 1 prajwalita17 prajwalita17   2716 Jan 29 00:07 sky130_inv.mag
 -rwxr-xr-x 1 prajwalita17 prajwalita17 136710 Jan 29 00:11 sky130A.tech
 ```
+Command to open the `sky130_inv.mag` inverter circuit in MAGIC is shown.
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ magic -T sky130.tech sky130_inv.mag 
 ```
@@ -575,10 +574,13 @@ prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openla
 <img width="170" alt="vsdstdcell" src="https://user-images.githubusercontent.com/104830557/215286280-5d2e9b10-8de3-4136-ae65-d1496fc1a72f.png">
 </div>
 
+`.spice` file is extracted from the `.mag` file using `extract all`, `ext2spice cthresh 0 rthresh 0` and 'ext2spice` commands in `tkcon 2.3 Main` console as shown.
+
 <div align="center">
 <img width="737" alt="spiceextract" src="https://user-images.githubusercontent.com/104830557/215286745-8feb5cfa-fd97-43a0-8702-fed85d8e96c2.png">
 </div>
 
+The `extract all`, `ext2spice cthresh 0 rthresh 0` and 'ext2spice`commands two files `sky130_inv.ext' and `sky130_inv.spice` in vsdstdcelldesign folder. The extracted `sky130_inv.spice` contains the connectivity information of the mosfets and the parasitic capacitances.
 ```‌
 ‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ls -ltr
 total 188
@@ -592,6 +594,35 @@ drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 libs
 -rw-rw-r-- 1 prajwalita17 prajwalita17   1425 Jan 29 00:40 sky130_inv.ext
 -rw-rw-r-- 1 prajwalita17 prajwalita17    353 Jan 29 00:41 sky130_inv.spice
 ```
+The extracted spice file is then modified to include the model files, input voltage values and transient/dc analysis commands as shown.
+
+```
+* SPICE3 file created from sky130_inv.ext - technology: sky130A
+  
+.option scale=0.01u
+.include ./libs/pshort.lib
+.include ./libs/nshort.lib
+
+//.subckt sky130_inv A Y VPWR VGND
+M0 Y A VGND VGND nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
+M1 Y A VPWR VPWR pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=17 l=23
+VDD VPWR 0 3.3V
+VSS VGND 0 0V
+Va A VGND PULSE(0 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+
+C0 A Y 0.05fF
+C1 VPWR Y 0.11fF
+C2 VPWR A 0.07fF
+C3 Y VGND 0.24fF
+C4 VPWR VGND 0.59fF
+//.ends
+.tran 1n 20n
+.control
+run
+.endc
+.end
+```
+
 
 ```
 Circuit: * spice3 file created from sky130_inv.ext - technology: sky130a
@@ -617,33 +648,7 @@ No. of Data Rows : 145
 ngspice 1 -> 
 ```
 
-```
-* SPICE3 file created from sky130_inv.ext - technology: sky130A
-  
-.option scale=0.01u
-.include ./libs/pshort.lib
-.include ./libs/nshort.lib
 
-//.subckt sky130_inv A Y VPWR VGND
-M0 Y A VGND VGND nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
-M1 Y A VPWR VPWR pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=17 l=23
-VDD VPWR 0 3.3V
-VSS VGND 0 0V
-Va A VGND PULSE(0 3.3V 0 0.1ns 0.1ns 2ns 4ns)
-
-
-C0 A Y 0.05fF
-C1 VPWR Y 0.11fF
-C2 VPWR A 0.07fF
-C3 Y VGND 0.24fF
-C4 VPWR VGND 0.59fF
-//.ends
-.tran 1n 20n
-.control
-run
-.endc
-.end
-```
 
 ```‌
 ngspice 1 -> plot y vs time a
@@ -653,7 +658,7 @@ ngspice 1 -> plot y vs time a
 <img width="299" alt="inv tran" src="https://user-images.githubusercontent.com/104830557/215303389-c5b686ea-202b-47cf-84ab-7bae3bae4db6.png">
 </div>
 
-
+|
 ```
 * SPICE3 file created from sky130_inv.ext - technology: sky130A
   
@@ -695,6 +700,11 @@ To characerize the cell, we find the following parameters.
 - Fall time - The time taken for the output to fall from 20% to 80% of its final value.
 - Rise cell delay - The 
 - Fall cell delay
+
+<div align="center">
+![Uploading spice spice.png…]()
+</div>
+
 
 Let us calculate these parameters for inv cell with output capacitance of 2fF.
 
