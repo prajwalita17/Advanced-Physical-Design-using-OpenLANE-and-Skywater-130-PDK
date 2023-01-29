@@ -715,21 +715,151 @@ Running ngspice simulations and measuring the parameters for inverter circuit fo
 
 
 
-What is the effect of increase in W/L ratio on fall cell delay ?
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@prajwalita17 
+prajwalita17
+/
+DAY-4
+Private
+Cannot fork because you own this repository and are not a member of any organizations.
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Settings
+DAY-4
+/
+README.md
+in
+main
+ 
 
-An increase in the width-to-length (W/L) ratio of a MOSFET transistor typically results in a decrease in the fall time of the cell delay. This is because a larger W/L ratio leads to a larger transconductance, which in turn leads to a faster rate of change in the drain current, and thus a faster fall time. However, it is important to note that there are other factors that can affect the fall time of a cell, such as the parasitic capacitances and the resistance of the interconnects, and these factors should also be considered when designing a circuit.
+Spaces
 
-What is the effect of increase in W/L ratio on rise cell delay ?
-An increase in the width-to-length (W/L) ratio of a MOSFET transistor will typically result in an increase in the rise time of the cell delay. This is because a larger W/L ratio leads to a larger parasitic drain-to-source capacitance, which must be charged up before a significant increase in the drain current can occur. Therefore, the larger parasitic capacitance leads to a slower rate of change in the drain current, and thus a slower rise time. However, as with fall time, it is important to note that other factors, such as the resistance of the interconnects, can affect the rise time of a cell, so these should also be considered when designing a circuit.
+2
 
-What is the effect of increase in W/L ratio on rise time ?
-An increase in the width-to-length (W/L) ratio of a MOSFET transistor will typically result in a decrease in the rise time. This is because a larger W/L ratio leads to a larger transconductance, which in turn leads to a faster rate of change in the drain current. This results in a faster rise time since it takes less time for the gate-source voltage to charge up the gate-drain capacitance. Additionally, as the W/L ratio increases, the drain-source resistance decreases resulting in a faster current flow and thus faster rise time. However, it is important to keep in mind that other factors, such as the parasitic capacitances and the resistance of the interconnects, can also affect the rise time, so these should also be considered when designing a circuit.
-
-What is the effect of increase in W/L ratio on fall time ?
-An increase in the width-to-length (W/L) ratio of a MOSFET transistor will typically result in a decrease in the fall time. This is because a larger W/L ratio leads to a larger transconductance, which in turn leads to a faster rate of change in the drain current. This results in a faster fall time since it takes less time for the drain current to decrease when the gate-source voltage is decreased. Additionally, as the W/L ratio increases, the drain-source resistance decreases resulting in a faster current flow and thus faster fall time. However, it is important to keep in mind that other factors, such as the parasitic capacitances and the resistance of the interconnects, can also affect the fall time, so these should also be considered when designing a circuit.
-
-
-
-
-
-
+Soft wrap
+1
+# DAY-4
+2
+# Standard Cell 
+3
+​
+4
+### Extracting LEF file from MAGIC file
+5
+​
+6
+- The horizontal and vertical routing grid must intersect on the input and output ports (A and Y)
+7
+​
+8
+- ![gridonports](https://user-images.githubusercontent.com/104830557/215318903-33eba1ed-cd2a-4bf9-add4-8fecc1151e9d.png)
+9
+​
+10
+- The width of the standard cell must be odd multiples of x pitch of the PR boundary.
+11
+​
+12
+![68 183 188 194 - Remote Desktop Connection 29-01-2023 15_32_45](https://user-images.githubusercontent.com/104830557/215319125-64b0191a-b12b-405c-ad15-39cd9d82099e.png)
+13
+​
+14
+The height of the standard cell must also be odd multiples of y pitch of the PR boundary.
+15
+```
+16
+save sky_130vsdinv.mag
+17
+```
+18
+​
+19
+```
+20
+lef write
+21
+```
+22
+`sky_130vsdinv.lef`
+23
+​
+24
+Copy 'my_base.sdc` `from vsdstdcell/extras` to `openlane/designs/picorv32a/src`
+25
+​
+26
+vsdstdcelldesign/libs/sky130_fd_sc_hd__typical.lib contains the sky_130vsdinv cell.
+27
+​
+28
+![typical lib](https://user-images.githubusercontent.com/104830557/215324433-a018331d-b142-404a-ab36-cc095a7806f0.png)
+29
+​
+30
+copy the libs/sky130_fd_sc_hd__typical.lib. sky130_fd_sc_hd__fast.lib. sky130_fd_sc_hd__slow.lib to src folder
+31
+​
+32
+We modify the config.tcl file by adding these lines to existing config.tcl file.
+33
+```
+34
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+35
+set ::env(LIB_MIN) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+36
+set ::env(LIB_MAX) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+37
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+38
+​
+39
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+40
+```
+41
+```
+42
+To run the complete flow while including the custom cell `sky_130vsdinv cell.lef`, 
+43
+docker
+44
+bash-4.2$ ./flow.tcl -interactive
+No file chosen
+Attach files by dragging & dropping, selecting or pasting them.
+Styling with Markdown is supported
+@prajwalita17
+Commit changes
+Commit summary
+Create README.md
+Optional extended description
+Add an optional extended description…
+ Commit directly to the main branch.
+ Create a new branch for this commit and start a pull request. Learn more about pull requests.
+ 
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
