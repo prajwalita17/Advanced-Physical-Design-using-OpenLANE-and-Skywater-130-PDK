@@ -40,9 +40,8 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 - [LAB - DAY 5](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
 
 ------------------------------------------------------------------------------------------
-### Introduction
+### Inception of open-source EDA, OpenLANE and Sky130 PDK
 ------------------------------------------------------------------------------
-
 
 **Open source EDA (Electronic Design Automation)** refers to a set of software tools that are freely available and can be used for designing and analyzing electronic systems. These tools include schematic capture, simulation, and PCB layout, and they can be used to create designs for a wide range of applications, such as microcontrollers, FPGAs, and RF circuits. Open source EDA tools are typically developed by a community of users and developers, who share their knowledge and collaborate on new features and improvements.
 Some popular open source VLSI EDA tools include:
@@ -102,19 +101,14 @@ PicoRV32 is designed based on the RISC-V instruction set architecture (ISA), whi
 PicoRV32 is also a small and simple core, it is designed to have a small area and a small memory footprint, and it can be used in resource-constrained designs. It is also intended to be easily integrated into other designs, with a minimal number of external interfaces and a simple bus interface.
 It is customizable and configurable, it can be easily adapted to different use cases and applications. It includes support for various features such as interrupts, debug interfaces, and memory protection.
 ![RISCV](https://user-images.githubusercontent.com/104830557/214847962-d95e6d88-59a5-4fa8-9c8c-a4ad8a752c68.jpeg)
+
+## RTL2GDS OpenLANE Flow
+
 ![image](https://user-images.githubusercontent.com/104830557/214769763-47f149b8-d74b-4f58-966f-b114785f6814.png)
-### LAB WORK
-### DAY 1
 
-
-### DAY 2
-#### - [Understanding the Floorplan variables and settings]()
-#### - [Floorplan]()
-#### - [Floorplan in MAGIC]()
-#### - [Design Synthesis and Results](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-synthesis-and-results)
 -----------------------------------------------------------------------------------------------------------------------------------
 ### DAY 1
-### Understanding the File Structure
+### Understanding the File Structure and Synthesis
 -----------------------------------------------------------------------------------------------------------------------------------
 All the Process Design Kits(PDKs) are listed under the pdks/ directory. We use Sky130A PDK for this design. There are other open-source PDKs and related files are also available in the pdk/ directory. The location of the PDK directory is given of $PDK_ROOT variable.
 ```
