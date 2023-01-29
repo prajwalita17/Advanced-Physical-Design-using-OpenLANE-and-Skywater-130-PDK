@@ -701,20 +701,17 @@ To characerize the cell, we find the following parameters.
 - Rise cell delay - The 
 - Fall cell delay
 
-<div align="center">
-![Uploading spice spice.png…]()
-</div>
 
 
 Let us calculate these parameters for inv cell with output capacitance of 2fF.
 
 Running ngspice simulations and measuring the parameters for inverter circuit for the two cases a. $W_p$ = 2 $W_n$ and b. $W_p$ = 3 $W_n$, we get the following results.
-| Parameter     | Inverter circuit with $W_p$ = 2 $W_n$|           Inverter circuit with $W_p$ = 3 $W_n$              |
+| Parameter     | Inverter circuit with $W_p$ = 2 $W_n$|           Inverter circuit with $W_p$ = 4 $W_n$              |
 |---------------|--------------------------------------|-------------------------|
-|Rise Time | 14.57 ps|43.39 ps|
-| Fall Time |151.34 ps|40.86 ps|
-| Rise Cell Delay  | 121.62 ps|125.74 ps|
-| Fall Cell Delay  | 25.74 ps|16.78 ps|
+|Rise Time | 147.69 ps|48.93 ps|
+| Fall Time |43.63 ps|56.87 ps|
+| Cell Rise Delay  | 121.29 ps|38.21 ps|
+| Cell Fall Delay  | 24.8 ps|70 ps|
 
 
 
