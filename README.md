@@ -588,3 +588,56 @@ drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 libs
 -rw-rw-r-- 1 prajwalita17 prajwalita17   1425 Jan 29 00:40 sky130_inv.ext
 -rw-rw-r-- 1 prajwalita17 prajwalita17    353 Jan 29 00:41 sky130_inv.spice
 ```
+```
+Circuit: * spice3 file created from sky130_inv.ext - technology: sky130a
+
+Scale set
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+Warning: va: no DC value, transient time 0 value used
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+y                                          3.3
+a                                            0
+vgnd                                         0
+vpwr                                       3.3
+va#branch                                    0
+vss#branch                         3.32412e-12
+vdd#branch                        -3.32413e-12
+
+
+
+No. of Data Rows : 145
+ngspice 1 -> 
+```
+```
+* SPICE3 file created from sky130_inv.ext - technology: sky130A
+  
+.option scale=0.01u
+.include ./libs/pshort.lib
+.include ./libs/nshort.lib
+
+//.subckt sky130_inv A Y VPWR VGND
+M0 Y A VGND VGND nshort_model.0 ad=1435 pd=152 as=1365 ps=148 w=35 l=23
+M1 Y A VPWR VPWR pshort_model.0 ad=1443 pd=152 as=1517 ps=156 w=17 l=23
+VDD VPWR 0 3.3V
+VSS VGND 0 0V
+Va A VGND PULSE(0 3.3V 0 0.1ns 0.1ns 2ns 4ns)
+
+
+C0 A Y 0.05fF
+C1 VPWR Y 0.11fF
+C2 VPWR A 0.07fF
+C3 Y VGND 0.24fF
+C4 VPWR VGND 0.59fF
+//.ends
+.tran 1n 20n
+.control
+run
+.endc
+.end
+```
