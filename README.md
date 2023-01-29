@@ -1,14 +1,13 @@
 # Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK
-This repository contains a step by step procedure to the complete RTL2GDSII flow of PICORV32A RISC-V core design using open-source EDA tool OpenLANE and Google-Skywater’s first manufacturable open source 130nm PDK.
-This repository contains the learnings from Advanced Physical Design Using OpenLANE / SKY130 workshop. It is primarily foucused on a complete RTL2GDS flow of PICORV32A RISC-V core designwith the help of open-source EDA tool OpenLANE and Google-SkyWater’s first manufacturable open source 130nm process design kit (pdk). 
+This repository contains the learnings from Advanced Physical Design Using OpenLANE / SKY130 workshop. It is primarily foucused on a complete RTL2GDS flow of PICORV32A RISC-V core designwith the help of open-source EDA tool OpenLANE and Google-SkyWater’s first manufacturable open source 130nm process design kit (pdk). This repository consolidates the lab activities done as a part of the 5-day workshop.
 
-## Contents
-### [Day1 – Inception of open-source EDA, OpenLANE and Sky130 PDK](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLane-and-Skywater-130/edit/main/README.md#inception-of-open-source-eda-openlane-and-sky130-pdk)
+## Course Contents
+### Day1 – Inception of open-source EDA, OpenLANE and Sky130 PDK
 
-- [How to talk to computers](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLane-and-Skywater-130/edit/main/README.md#how-to-talk-to-computers)
-- [SoC design and OpenLANE](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLane-and-Skywater-130/edit/main/README.md#soc-design-and-openlane)
-- [Starting RISC-V SoC Reference design](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLane-and-Skywater-130/edit/main/README.md#starting-risc-v-soc-reference-design)
-- [Get familiar to open-source EDA tools](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLane-and-Skywater-130/edit/main/README.md#get-familiar-to-open-source-eda-tools)
+- How to talk to computers
+- SoC design and OpenLANE
+- Starting RISC-V SoC Reference design
+- Get familiar to open-source EDA tools
 - [LAB- DAY 1](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-1-1)
 
 ### Day 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
@@ -39,7 +38,71 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 - Routing and design rule check (DRC)
 - PNR interactive flow tutorialn of what this project does and who it's for
 - [LAB - DAY 5](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
-- 
+
+------------------------------------------------------------------------------------------
+### Introduction
+------------------------------------------------------------------------------
+
+
+**Open source EDA (Electronic Design Automation)** refers to a set of software tools that are freely available and can be used for designing and analyzing electronic systems. These tools include schematic capture, simulation, and PCB layout, and they can be used to create designs for a wide range of applications, such as microcontrollers, FPGAs, and RF circuits. Open source EDA tools are typically developed by a community of users and developers, who share their knowledge and collaborate on new features and improvements.
+Some popular open source VLSI EDA tools include:
+- **Verilog-Perl**: A set of Perl scripts that can be used to simulate and analyze Verilog designs.
+- **Icarus Verilog**: A free Verilog simulation and synthesis tool.
+- **OpenSTA**: An open source static timing analysis tool.
+- **Yosys**: An open source synthesis tool for RTL designs.
+- **Magic**: A popular open source layout editor for IC design.
+- **OpenSCAD**: A 3D modeling tool used for designing IC packages and other mechanical parts.
+
+**OpenLANE (Open Logic and Analog Network Engine)** is an open-source electronic design automation (EDA) tool that is used for the design and verification of digital and mixed-signal integrated circuits (ICs). OpenLANE is used for the following purposes:
+- **RTL synthesis**: OpenLANE can convert high-level hardware descriptions written in hardware description languages (HDLs) such as Verilog and VHDL into lower-level gate-level netlists.
+- **Physical Design**: OpenLANE can take a gate-level netlist and optimize it for physical layout, including floorplanning, placement, and routing.
+- **Verification**: OpenLANE includes a variety of verification capabilities, including logic equivalence checking, formal verification, and simulation.
+- **Power and performance optimization**: OpenLANE can analyze and optimize a design for power and performance, including power-grid analysis, power-aware synthesis, and power-aware placement.
+- **Analog and mixed-signal design**: OpenLANE includes support for the design and verification of analog and mixed-signal circuits, including SPICE-level simulation and layout.
+
+ OpenLANE flow consists of several stages. By default all the flow steps are run in sequence. Each stage may consist of multiple sub-stages. OpenLANE can also be run interactively as shown here.
+
+1. Synthesis
+      1. `yosys` - Performs RTL synthesis
+      2. `abc` - Performs technology mapping
+      3. `OpenSTA` - Pefroms static timing analysis on the resulting netlist to generate timing reports
+  2. Floorplan and PDN
+      1. `init_fp` - Defines the core area for the macro as well as the rows (used for placement) and the tracks (used for routing)
+      2. `ioplacer` - Places the macro input and output ports
+      3. `pdn` - Generates the power distribution network
+      4. `tapcell` - Inserts welltap and decap cells in the floorplan
+  3. Placement
+      1. `RePLace` - Performs global placement
+      2. `Resizer` - Performs optional optimizations on the design
+      3. `OpenPhySyn` - Performs timing optimizations on the design
+      4. `OpenDP` - Perfroms detailed placement to legalize the globally placed components
+  4. CTS
+      1. `TritonCTS` - Synthesizes the clock distribution network (the clock tree)
+  5. Routing
+      1. `FastRoute` - Performs global routing to generate a guide file for the detailed router
+      2. `TritonRoute` - Performs detailed routing
+      3. `SPEF-Extractor` - Performs SPEF extraction
+  6. GDSII Generation
+      1. `Magic` - Streams out the final GDSII layout file from the routed def
+  7. Checks
+      1. `Magic` - Performs DRC Checks & Antenna Checks
+      2. `Netgen` - Performs LVS Checks
+
+**SKY130 PDK (Process Design Kit)** is a set of design and verification tools and components that is specifically developed and optimized for the SKY130 130nm CMOS process technology from TSMC (Taiwan Semiconductor Manufacturing Company). The PDK provides a library of standard cells and other components that are pre-verified and optimized for the SKY130 process, as well as a set of design and verification tools such as layout and extraction tools, simulation models, and testbenches.
+The PDK provides various components and tools that are needed for the design of integrated circuits, such as :
+- **Standard cell library**: A pre-verified library of standard cells, including logic gates, flip-flops, and other components, that are optimized for the SKY130 process.
+- **Layout and extraction tools**: Tools for creating and verifying layouts of digital and mixed-signal circuits, including parasitic extraction and power-grid analysis.
+- **Simulation models**: Behavioral and Spice-level simulation models of the standard cells and other components in the library, as well as a library of behavioral models for analog and mixed-signal components.
+- **Testbenches and verification suites**: Testbenches and other verification tools for verifying the functionality and timing of digital and mixed-signal circuits.-
+- **Design guidelines and best practices**: Guidelines and best practices for designing and verifying circuits for the SKY130 process.
+Overall, PDKs are used to simplify the design process of integrated circuits by providing a set of pre-verified components and tools that are optimized for a specific process technology, thus allowing designers to focus on the functional and architectural aspects of their designs.
+
+**RISC-V PicoRV32** is an open-source, **32-bit RISC-V** processor core that is designed for use in FPGA (Field-Programmable Gate Array) and ASIC (Application-Specific Integrated Circuit) designs. It is a small and simple core that is intended for use in embedded systems and other low-power, low-cost applications.
+PicoRV32 is designed based on the RISC-V instruction set architecture (ISA), which is a free and open standard for computer processors. The PicoRV32 core implements the RV32IMC instruction set, which includes 32 general-purpose registers, 32-bit instructions, and support for integer and control instructions.
+PicoRV32 is also a small and simple core, it is designed to have a small area and a small memory footprint, and it can be used in resource-constrained designs. It is also intended to be easily integrated into other designs, with a minimal number of external interfaces and a simple bus interface.
+It is customizable and configurable, it can be easily adapted to different use cases and applications. It includes support for various features such as interrupts, debug interfaces, and memory protection.
+![RISCV](https://user-images.githubusercontent.com/104830557/214847962-d95e6d88-59a5-4fa8-9c8c-a4ad8a752c68.jpeg)
+![image](https://user-images.githubusercontent.com/104830557/214769763-47f149b8-d74b-4f58-966f-b114785f6814.png)
 ### LAB WORK
 ### DAY 1
 
@@ -654,31 +717,18 @@ Similarly, running ngspice simulations and measuring the parameters for inverter
 | Cell Rise Delay  | 121.29 ps|38.21 ps|
 | Cell Fall Delay  | 24.8 ps|70 ps|
 
+Running ngspice simulations and measuring the parameters for inverter circuit for two different output load capacitances while keeping $W_p$ = 2 $W_n$, we get the following results.
 
-DAY-4
-Private
-Cannot fork because you own this repository and are not a member of any organizations.
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-Settings
-DAY-4
-/
-README.md
-in
-main
- 
+| Parameter     | Inverter circuit with $W_p$ = 2 $W_n$ and output load capacitance 2 fF|  Inverter circuit with $W_p$ = 2 $W_n$ and output load capacitance 0.2 fF  |
+|---------------|--------------------------------------|-------------------------|
+|Rise Time | 147.69 ps|48 ps|
+| Fall Time |43.63 ps|31.34 ps|
+| Cell Rise Delay  | 121.29 ps|28.025 ps|
+| Cell Fall Delay  | 24.8 ps|34.4 ps|
 
-Spaces
 
-2
 
-Soft wrap
-1
+
 # DAY-4
 2
 # Standard Cell 
