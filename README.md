@@ -701,10 +701,10 @@ Let us calculate these parameters for inv cell with output capacitance of 2fF.
 Running ngspice simulations and measuring the parameters for inverter circuit for the two cases a. $W_p$ = 2 $W_n$ and b. $W_p$ = 3 $W_n$, we get the following results.
 | Parameter     | Inverter circuit with $W_p$ = 2 $W_n$|           Inverter circuit with $W_p$ = 3 $W_n$              |
 |---------------|--------------------------------------|-------------------------|
-| | The core utilization percentage. <br> (Default: `50` percent)|
-| `FP_ASPECT_RATIO`  | The core's aspect ratio (height / width). <br> (Default: `1`)|
-| `FP_SIZING`  | Whether to use relative sizing by making use of `FP_CORE_UTIL` or absolute one using `DIE_AREA`. <br> (Default: `"relative"` - accepts "absolute" as well)|
-| `DIE_AREA`  | Specific die area to be used in floorplanning. Specified as a 4-corner rectangle. Units in mm <br> (Default: unset)|
+|Rise Time | 14.57 ps|43.39 ps|
+| Fall Time |151.34 ps|40.86 ps|
+| Rise Cell Delay  | 121.62 ps|125.74 ps|
+| Fall Cell Delay  | 25.74 ps|16.78 ps|
 
 
 
