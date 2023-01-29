@@ -17,12 +17,14 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 - Library Binding and Placement
 - Cell design and characterization flows
 - General timing characterization parameters
+- [LAB - DAY 2](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
 
 ### Day 3 - Design and characterize one library cell using Magic Layout tool and ngspice
 
 - Labs for CMOS inverter ngspice simulations
 - Inception of Layout – CMOS fabrication process
 - Sky130 Tech File Labs
+- [LAB - DAY 3](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
 
 ### Day 4 - Pre-layout timing analysis and importance of good clock tree
 
@@ -30,11 +32,13 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 - Timing analysis with ideal clocks using openSTA
 - Clock tree synthesis TritonCTS and signal integrity
 - Timing analysis with real clocks using openSTA
-
+- [LAB - DAY 4](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
+- 
 ### Day 5 - Final steps for RTL2GDS
 
 - Routing and design rule check (DRC)
 - PNR interactive flow tutorialn of what this project does and who it's for
+- [LAB - DAY 5](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2-1)
 - 
 ### LAB WORK
 ### DAY 1
@@ -528,29 +532,28 @@ For this we need the `tech file`, `LEf file` and `DEF file`.
 ```
 ‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/results/floorplan$ magic -T /home/kunalg123/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
 ```
+The figure below shows the magic layout of the floor plan. Presently the layout consists of IO pins and the decap cells. The unplaced standard cells can be seen in the lower left corner. The details of any selected cell can be obtained by typing `what` in `tkcon 2.3 Main` console. For example, The selected pin `trace_data[26]` belongs to metal 3 layer as shown in the console.
+
 <div align="center">
 <img width="534" alt="magic" src="https://user-images.githubusercontent.com/104830557/214843831-d8d3eb80-52ae-431b-8c9c-5673a6629b07.png">
-<img width="486" alt="tcon" src="https://user-images.githubusercontent.com/104830557/214843881-6e307a0d-fc51-451c-aae6-e7b5b3e05b4f.png">
-</div>
-<div align="center">
-<img width="605" alt="magiczoom" src="https://user-images.githubusercontent.com/104830557/215268066-2757b4aa-91d7-4ede-afff-7340895dbab3.png">
 </div>
 <div align="center">
 <img width="800" alt="what_tkcon" src="https://user-images.githubusercontent.com/104830557/215285493-d365c166-e381-4559-bb79-762bd2860f0d.png">
 </div>
 <div align="center">
-<img width="603" alt="decap cells" src="https://user-images.githubusercontent.com/104830557/215285574-30b2d7c9-bf22-4ac6-b307-6630c45b1cdf.png">
-</div>
-<div align="center">
 <img width="602" alt="unplaced cells" src="https://user-images.githubusercontent.com/104830557/215285581-c7d9f8eb-344c-4363-8f36-f9ddc84df41d.png">
 </div>
-______________________________________________________________________________________________________________________________________________________________________
-### Day 3
-### Cell Characterization
-_______________________________________________________________________________________________________________________________________________________________________
+
+-----------------------------------------------------------------------------------------------------------------------------------
+### DAY 3
+### Standard Cell Design and Characterization
+-----------------------------------------------------------------------------------------------------------------------------------
+
 **Cell characterization** is the process of measuring the electrical characteristics of a digital logic cell. This includes measuring the cell's performance parameters such as delay, power consumption, and noise margins, under different conditions such as different input patterns and process variations. The results of cell characterization are used to create a library of cell models that can be used in the design and simulation of digital circuits.
 
 During the characterization process, the cell's input and output waveforms are measured using testbenches and the results are used to create a model that describes the cell's behavior under different conditions. The model is then used to predict the cell's performance in the overall circuit design, allowing designers to optimize the circuit's performance and ensure that it meets the required specifications. Cell characterization is an important step in the VLSI design flow, as it allows designers to create accurate models of the cells that will be used in the final circuit, and thus can help to improve the yield and reliability of the final product.
+
+The focus of this section of LAB work is to design a standard cell (inverter) spice deck and characterize the cell for various W/L ratio and output load capacitance. 
 
 We use the inverter design from `vsdstdcelldesign.git`. The command to clone and add the sky130A.tech file to vsdstdcell design folder is as shown.
 ```
@@ -566,7 +569,7 @@ drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 libs
 -rw-rw-r-- 1 prajwalita17 prajwalita17   2716 Jan 29 00:07 sky130_inv.mag
 -rwxr-xr-x 1 prajwalita17 prajwalita17 136710 Jan 29 00:11 sky130A.tech
 ```
-Command to open the `sky130_inv.mag` inverter circuit in MAGIC is shown.
+`sky130_inv.mag` is the magic layout of the inverter. Command to open the `sky130_inv.mag` inverter circuit in MAGIC is shown.
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ magic -T sky130.tech sky130_inv.mag 
 ```
