@@ -812,7 +812,8 @@ The negative slack can be fixed by setting appropriate values of variables. Redu
 We can see the cell by zooming by pressing `z`. We can also see the custom cell in the cell manager.
 
 <div align="center">
-![custom cell on cell manager](https://user-images.githubusercontent.com/104830557/215380196-81ab198e-d6d9-45e1-9176-60d605641b59.png)
+![cellmanager](https://user-images.githubusercontent.com/104830557/215380541-ac7ffdc7-8c5b-4e2a-bf68-4f7d126a9fcb.jpg)
+
 	</div>
 	
 The expanded version of the custom cell is as shown.
