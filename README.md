@@ -596,15 +596,15 @@ For this we need the `tech file`, `LEf file` and `DEF file`.
 ```
 The figure below shows the magic layout of the floor plan. Presently the layout consists of IO pins and the decap cells. The unplaced standard cells can be seen in the lower left corner. The details of any selected cell can be obtained by typing `what` in `tkcon 2.3 Main` console. For example, The selected pin `trace_data[26]` belongs to metal 3 layer as shown in the console.
 
-<div align="center">
+
 <img width="534" alt="magic" src="https://user-images.githubusercontent.com/104830557/214843831-d8d3eb80-52ae-431b-8c9c-5673a6629b07.png">
-</div>
-<div align="center">
+
+
 <img width="800" alt="what_tkcon" src="https://user-images.githubusercontent.com/104830557/215285493-d365c166-e381-4559-bb79-762bd2860f0d.png">
-</div>
-<div align="center">
+
+
 <img width="602" alt="unplaced cells" src="https://user-images.githubusercontent.com/104830557/215285581-c7d9f8eb-344c-4363-8f36-f9ddc84df41d.png">
-</div>
+
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ### DAY 3
@@ -635,15 +635,15 @@ drwxrwxr-x 2 prajwalita17 prajwalita17   4096 Jan 29 00:07 libs
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ magic -T sky130.tech sky130_inv.mag 
 ```
-<div align="center">
+
 <img width="170" alt="vsdstdcell" src="https://user-images.githubusercontent.com/104830557/215286280-5d2e9b10-8de3-4136-ae65-d1496fc1a72f.png">
-</div>
+
 
 `.spice` file is extracted from the `.mag` file using `extract all`, `ext2spice cthresh 0 rthresh 0` and 'ext2spice` commands in `tkcon 2.3 Main` console as shown.
 
-<div align="center">
+
 <img width="737" alt="spiceextract" src="https://user-images.githubusercontent.com/104830557/215286745-8feb5cfa-fd97-43a0-8702-fed85d8e96c2.png">
-</div>
+
 
 The `extract all`, `ext2spice cthresh 0 rthresh 0` and `ext2spice` commands creates two files `sky130_inv.ext` and `sky130_inv.spice` in vsdstdcelldesign folder. 
 The extracted `sky130_inv.spice` contains the connectivity information of the mosfets and the parasitic capacitances. The extracted spice file is then modified to include the model files, input voltage values and transient/dc analysis commands as shown.
@@ -651,9 +651,8 @@ The extracted `sky130_inv.spice` contains the connectivity information of the mo
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ vim sky130_inv.spice
 ```
-<div align="center">
+
 ![wp24](https://user-images.githubusercontent.com/104830557/215353087-02ba5fcd-f20c-46c3-a4a1-28f30b8462d4.png)
-</div>
 
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ngspice sky130_inv.spice
@@ -702,9 +701,7 @@ Let us calculate these parameters for inv cell with output capacitance of 2fF. R
 ![image](https://user-images.githubusercontent.com/104830557/215378257-1fcc687a-4c39-4687-a5a4-102cfde07df4.png)
 
 
-<div align="center">
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 10_36_22](https://user-images.githubusercontent.com/104830557/215354384-d77f5d3f-43a7-47fe-96d0-5d02f3a99015.png)
-</div>
 
 Similarly, running ngspice simulations and measuring the parameters for inverter circuit for the following two cases, we get the following results.
 - $W_p$ = 2 $W_n$
@@ -747,16 +744,12 @@ The inverter design can be saved with a custom name in the `tkcon 2.3 Main` cons
 Copy `my_base.sdc` `from vsdstdcell/extras` to `openlane/designs/picorv32a/src`. 
 `vsdstdcelldesign/libs/sky130_fd_sc_hd__typical.lib` contains the `sky_130vsdinv cell` as shown. 
 
-<div align="center">
 ![image](https://user-images.githubusercontent.com/104830557/215379125-8dfe3131-16dd-42c9-8fde-cc64d5d3e3aa.png)
 
-</div>
 
 copy the `libs/sky130_fd_sc_hd__typical.lib`. `sky130_fd_sc_hd__fast.lib`. `sky130_fd_sc_hd__slow.lib` to `src` folder. Contents of `src` folder will be 
 
-<div align="center">
 ![src](https://user-images.githubusercontent.com/104830557/215357103-46b0213e-1419-404d-84c2-5c2ffece6535.png)
-	</div>
 	
 We then modify the config.tcl file by adding these lines to existing config.tcl file.
 
@@ -781,9 +774,8 @@ Steps for the complete flow.
 
 The statitics after synthesis show that there are 1537 instances of the custom cell `sky_130vsdinv` in the design.
 
-<div align="center">
 ![stat](https://user-images.githubusercontent.com/104830557/215358688-19fbc2b4-930b-464e-9169-71372f8a0ce2.png)
-</div>
+
 
 ```
 set ::env(SYNTH_STRATEGY) 0
