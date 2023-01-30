@@ -818,9 +818,8 @@ We can see the cell by zooming by pressing `z`. We can also see the custom cell 
 	
 The expanded version of the custom cell is as shown.
 
-<div align="center">
 ![expanded version custom cell](https://user-images.githubusercontent.com/104830557/215380218-9a91b0df-68fe-4fd9-a5c2-ae3cd7a35ad2.png)
-</div>
+
 	
 
 -----------------------------------------------------------------------------------------------------------------------------------
