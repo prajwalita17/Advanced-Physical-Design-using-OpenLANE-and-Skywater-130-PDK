@@ -738,7 +738,7 @@ Running ngspice simulations and measuring the parameters for inverter circuit fo
 - The height of the standard cell is defined by the y pitch of the PR boundary. The hieght of all the standard cells in a design is same.
 
 <div align="center">
-![gridonports](https://user-images.githubusercontent.com/104830557/215359055-408d9614-b192-4f34-9e3a-7953cc508ab7.png)
+![gridonports - Paint 30-01-2023 08_07_36](https://user-images.githubusercontent.com/104830557/215375871-5718b8e2-de7f-4616-bd01-9c9ddea6085b.png)
 </div>
 
 The inverter design can be saved with a custom name in the `tkcon 2.3 Main` console as shown. The custom cell would be identied as `sky_130vsdinv` after placement.
