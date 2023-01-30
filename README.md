@@ -32,7 +32,7 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 - Clock tree synthesis TritonCTS and signal integrity
 - Timing analysis with real clocks using openSTA
 - [LAB - DAY 4](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-4)
-- 
+
 ### Day 5 - Final steps for RTL2GDS
 
 - Routing and design rule check (DRC)
@@ -101,15 +101,14 @@ Overall, PDKs are used to simplify the design process of integrated circuits by 
 PicoRV32 is designed based on the RISC-V instruction set architecture (ISA), which is a free and open standard for computer processors. The PicoRV32 core implements the RV32IMC instruction set, which includes 32 general-purpose registers, 32-bit instructions, and support for integer and control instructions.
 PicoRV32 is also a small and simple core, it is designed to have a small area and a small memory footprint, and it can be used in resource-constrained designs. It is also intended to be easily integrated into other designs, with a minimal number of external interfaces and a simple bus interface.
 It is customizable and configurable, it can be easily adapted to different use cases and applications. It includes support for various features such as interrupts, debug interfaces, and memory protection.
-<div align="center">
+
 ![RISCV](https://user-images.githubusercontent.com/104830557/214847962-d95e6d88-59a5-4fa8-9c8c-a4ad8a752c68.jpeg)
-</div>
 
 ## RTL2GDS OpenLANE Flow
 
-<div align="center">
+
 ![image](https://user-images.githubusercontent.com/104830557/214769763-47f149b8-d74b-4f58-966f-b114785f6814.png)
-</div>
+
 
 -----------------------------------------------------------------------------------------------------------------------------------
 ### DAY 1
@@ -332,9 +331,9 @@ set ::env(CTS_TECH_DIR) "N/A"
 ```
 Once the design preparation is complete, `runs/` folder would be created inside the `picorv32a` folder as shown. The contents inside the picorv32/runs/28-01_10-00/tmp will be required by OpenLANE at various stages. The `merged.lef` in the `tmp` folder is the LEF file created during the design preparation. This LEF file contains the tech and cell LEF information.
 
-<div align="center">
+
 <img width="735" alt="CELL LEF AND TECH LEF" src="https://user-images.githubusercontent.com/104830557/215262938-95fb2ef0-9aea-49d4-a48b-81e8a71863a3.png">
-</div>
+
 
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/28-01_10-00/tmp$ ls -ltr
@@ -822,6 +821,8 @@ We continue the flow by running the following commands.
 - `% run_cts`
 
 - `% run_routing`
+
+Thus the complete RTL2GDS flow was completed within the stipulated time. 
 
 -------------------------------------------
 ### Acknowledgements
