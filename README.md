@@ -804,17 +804,14 @@ The negative slack can be fixed by setting appropriate values of variables. Redu
 
 - `% detailed_placement`
 
-
-<div align="center">
 ![standard cells after placement](https://user-images.githubusercontent.com/104830557/215380173-a55343d5-9f19-4be5-b0e5-880232f973eb.png)
-</div>
+
 	
 We can see the cell by zooming by pressing `z`. We can also see the custom cell in the cell manager.
 
-<div align="center">
+
 ![cellmanager](https://user-images.githubusercontent.com/104830557/215380541-ac7ffdc7-8c5b-4e2a-bf68-4f7d126a9fcb.jpg)
 
-	</div>
 	
 The expanded version of the custom cell is as shown.
 
