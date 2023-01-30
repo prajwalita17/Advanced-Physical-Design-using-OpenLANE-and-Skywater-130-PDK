@@ -791,23 +791,25 @@ set ::env(SYNTH_SIZING) 0
 ```
 The negative slack can be fixed by setting appropriate values of variables. Reducing maximum fanout or replacing cells with lower drive strength can be replaced with those having higher drive strength. These changed may have a negative impact on area. 
 
-`% init_floorplan`
+- `% init_floorplan`
 
-`% place_io`
+- `% place_io`
 
-`% global_placement_or`
+- `% global_placement_or`
 
-`% detailed_placement`
+- `% detailed_placement`
 
-`% tap_decap_or`
+- `% tap_decap_or`
 
-`% detailed_placement`
+- `% detailed_placement`
+
 
 <div align="center">
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_13_22](https://user-images.githubusercontent.com/104830557/215358749-10273a4f-9e80-4e74-b6ca-b30b22089d96.png)
 	</div>
 	
 We can see the cell by zooming by pressing `z`. We can also see the custom cell in the cell manager.
+
 <div align="center">
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_23_55](https://user-images.githubusercontent.com/104830557/215358876-e8695a65-94d3-4ae3-bfbb-6d6e9d77d463.png)
 	</div>
