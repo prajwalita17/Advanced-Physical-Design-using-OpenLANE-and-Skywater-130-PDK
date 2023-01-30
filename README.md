@@ -806,20 +806,20 @@ The negative slack can be fixed by setting appropriate values of variables. Redu
 
 
 <div align="center">
-![image](https://user-images.githubusercontent.com/104830557/215379687-9f0892b6-7e8d-474d-8942-9dcf6170a5ec.png)
-	</div>
+![standard cells after placement](https://user-images.githubusercontent.com/104830557/215380173-a55343d5-9f19-4be5-b0e5-880232f973eb.png)
+</div>
 	
 We can see the cell by zooming by pressing `z`. We can also see the custom cell in the cell manager.
 
 <div align="center">
-![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_23_55](https://user-images.githubusercontent.com/104830557/215358876-e8695a65-94d3-4ae3-bfbb-6d6e9d77d463.png)
+![custom cell on cell manager](https://user-images.githubusercontent.com/104830557/215380196-81ab198e-d6d9-45e1-9176-60d605641b59.png)
 	</div>
 	
 The expanded version of the custom cell is as shown.
 
 <div align="center">
-![image](https://user-images.githubusercontent.com/104830557/215379925-3306243a-fbf2-476a-8313-d440b85dd5d8.png)
-	</div>
+![expanded version custom cell](https://user-images.githubusercontent.com/104830557/215380218-9a91b0df-68fe-4fd9-a5c2-ae3cd7a35ad2.png)
+</div>
 	
 
 -----------------------------------------------------------------------------------------------------------------------------------
