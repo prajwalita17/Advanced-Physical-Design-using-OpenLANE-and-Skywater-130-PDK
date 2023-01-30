@@ -771,13 +771,14 @@ set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/sr
 We now run the complete flow starting from invoking `docker` to `routing`. The flow will now include the custom cell `sky_130vsdinv`
 
 Steps for the complete flow.
-`prajwalita17@vsd-pd-workshop-05:/home/kunalg123/Desktop/work/tools/openlane_working_dir/openlane$ docker`
-`bash-4.2$ ./flow.tcl -interative`
-`% package require openlane 0.9`
-`% prep -design picorv32a`
-`% set lefs [glob $::env(DESIGN_DIR)/src/*.lef]`
-`% add_lefs -src $lefs`
-`% run_synthesis`
+- `prajwalita17@vsd-pd-workshop-05:/home/kunalg123/Desktop/work/tools/openlane_working_dir/openlane$ docker`
+- `bash-4.2$ ./flow.tcl -interative`
+- `% package require openlane 0.9`
+- `% prep -design picorv32a`
+- `% set lefs [glob $::env(DESIGN_DIR)/src/*.lef]`
+- `% add_lefs -src $lefs`
+- `% run_synthesis`
+
 The statitics after synthesis show that there are 1537 instances of the custom cell `sky_130vsdinv` in the design.
 
 <div align="center">
