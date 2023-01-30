@@ -815,6 +815,10 @@ We continue the flow by running the following commands.
 
 - `% run_cts`
 
+The DEF after CTS stage is as shown.
+
+![image](https://user-images.githubusercontent.com/104830557/215393542-baeb775b-21f2-49db-88b3-fb236cee44da.png)
+
 - `% run_routing`
 
 - `% run_magic`
