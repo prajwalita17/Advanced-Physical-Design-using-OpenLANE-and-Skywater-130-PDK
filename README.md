@@ -685,6 +685,8 @@ ngspice 1 -> plot y vs time a
 
 ![Snipping Tool 30-01-2023 01_59_52](https://user-images.githubusercontent.com/104830557/215354157-fadc120a-cffd-41a4-be3c-46b3fe972ba6.png)
 
+![image](https://user-images.githubusercontent.com/104830557/215378257-1fcc687a-4c39-4687-a5a4-102cfde07df4.png)
+
 To characerize the cell, we find the following parameters for various W/L ratio or NMOS and PMOS.
 - Rise Time
 - Fall Time
