@@ -700,8 +700,6 @@ Let us calculate these parameters for inv cell with output capacitance of 2fF. R
 ![image](https://user-images.githubusercontent.com/104830557/215378257-1fcc687a-4c39-4687-a5a4-102cfde07df4.png)
 
 
-![68 183 188 194 - Remote Desktop Connection 29-01-2023 10_36_22](https://user-images.githubusercontent.com/104830557/215354384-d77f5d3f-43a7-47fe-96d0-5d02f3a99015.png)
-
 Similarly, running ngspice simulations and measuring the parameters for inverter circuit for the following two cases, we get the following results.
 - $W_p$ = 2 $W_n$
 - $W_p$ = 4 $W_n$
@@ -732,9 +730,6 @@ Running ngspice simulations and measuring the parameters for inverter circuit fo
 - The horizontal and vertical routing grid must intersect on the input and output ports (A and Y)
 - The width of the standard cell must be odd multiples of x pitch of the PR boundary.
 - The height of the standard cell is defined by the y pitch of the PR boundary. The hieght of all the standard cells in a design is same.
-
-![image](https://user-images.githubusercontent.com/104830557/215379125-8dfe3131-16dd-42c9-8fde-cc64d5d3e3aa.png)
-
 
 The inverter design can be saved with a custom name in the `tkcon 2.3 Main` console as shown. The custom cell would be identied as `sky_130vsdinv` after placement.
 `save sky_130vsdinv.mag`
