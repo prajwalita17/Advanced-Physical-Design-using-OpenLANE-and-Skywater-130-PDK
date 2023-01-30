@@ -814,8 +814,9 @@ We can see the cell by zooming by pressing `z`. We can also see the custom cell 
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_23_55](https://user-images.githubusercontent.com/104830557/215358876-e8695a65-94d3-4ae3-bfbb-6d6e9d77d463.png)
 	</div>
 	
-<div align="center">
 The expanded version of the custom cell is as shown.
+
+<div align="center">
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_31_28](https://user-images.githubusercontent.com/104830557/215358883-da163cd4-a859-404a-80ed-976d456cebea.png)
 	</div>
 	
@@ -828,9 +829,9 @@ The expanded version of the custom cell is as shown.
 We continue the flow by running the following commands.
 `% gen_pdn`
 
-`% run_cts`
+- `% run_cts`
 
-`% run_routing`
+- `% run_routing`
 
 -------------------------------------------
 ### Acknowledgements
