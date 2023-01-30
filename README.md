@@ -685,7 +685,7 @@ ngspice 1 -> plot y vs time a
 
 ![Snipping Tool 30-01-2023 01_59_52](https://user-images.githubusercontent.com/104830557/215354157-fadc120a-cffd-41a4-be3c-46b3fe972ba6.png)
 
-![image](https://user-images.githubusercontent.com/104830557/215378257-1fcc687a-4c39-4687-a5a4-102cfde07df4.png)
+
 
 To characerize the cell, we find the following parameters for various W/L ratio or NMOS and PMOS.
 - Rise Time
@@ -703,6 +703,9 @@ Let us calculate these parameters for inv cell with output capacitance of 2fF. R
 | Fall Time |43.39 ps|40.86 ps|
 | Cell Rise Delay  | 121.62 ps|125.74 ps|
 | Cell Fall Delay  | 25.74 ps|16.78 ps|
+
+![image](https://user-images.githubusercontent.com/104830557/215378257-1fcc687a-4c39-4687-a5a4-102cfde07df4.png)
+
 
 <div align="center">
 ![68 183 188 194 - Remote Desktop Connection 29-01-2023 10_36_22](https://user-images.githubusercontent.com/104830557/215354384-d77f5d3f-43a7-47fe-96d0-5d02f3a99015.png)
@@ -739,10 +742,8 @@ Running ngspice simulations and measuring the parameters for inverter circuit fo
 - The width of the standard cell must be odd multiples of x pitch of the PR boundary.
 - The height of the standard cell is defined by the y pitch of the PR boundary. The hieght of all the standard cells in a design is same.
 
-<div align="center">
-![Photos 30-01-2023 08_11_25](https://user-images.githubusercontent.com/104830557/215376250-56f2e321-a7db-441d-8efb-53fe078924ed.png)
+![image](https://user-images.githubusercontent.com/104830557/215379125-8dfe3131-16dd-42c9-8fde-cc64d5d3e3aa.png)
 
-</div>
 
 The inverter design can be saved with a custom name in the `tkcon 2.3 Main` console as shown. The custom cell would be identied as `sky_130vsdinv` after placement.
 `save sky_130vsdinv.mag`
@@ -752,7 +753,8 @@ Copy `my_base.sdc` `from vsdstdcell/extras` to `openlane/designs/picorv32a/src`.
 `vsdstdcelldesign/libs/sky130_fd_sc_hd__typical.lib` contains the `sky_130vsdinv cell` as shown. 
 
 <div align="center">
-![typical lib](https://user-images.githubusercontent.com/104830557/215324433-a018331d-b142-404a-ab36-cc095a7806f0.png)
+![image](https://user-images.githubusercontent.com/104830557/215379125-8dfe3131-16dd-42c9-8fde-cc64d5d3e3aa.png)
+
 </div>
 
 copy the `libs/sky130_fd_sc_hd__typical.lib`. `sky130_fd_sc_hd__fast.lib`. `sky130_fd_sc_hd__slow.lib` to `src` folder. Contents of `src` folder will be 
