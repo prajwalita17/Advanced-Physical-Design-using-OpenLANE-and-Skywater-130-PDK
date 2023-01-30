@@ -818,7 +818,7 @@ We can see the cell by zooming by pressing `z`. We can also see the custom cell 
 The expanded version of the custom cell is as shown.
 
 <div align="center">
-![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_31_28](https://user-images.githubusercontent.com/104830557/215358883-da163cd4-a859-404a-80ed-976d456cebea.png)
+![image](https://user-images.githubusercontent.com/104830557/215379925-3306243a-fbf2-476a-8313-d440b85dd5d8.png)
 	</div>
 	
 
