@@ -681,11 +681,6 @@ vdd#branch                        -3.32413e-12
 No. of Data Rows : 145
 ngspice 1 -> plot y vs time a
 ```
-![wp24 - Paint 30-01-2023 02_01_54](https://user-images.githubusercontent.com/104830557/215354534-504f8b98-f861-4168-9190-930fa728d76b.png)
-
-![Snipping Tool 30-01-2023 01_59_52](https://user-images.githubusercontent.com/104830557/215354157-fadc120a-cffd-41a4-be3c-46b3fe972ba6.png)
-
-
 
 To characerize the cell, we find the following parameters for various W/L ratio or NMOS and PMOS.
 - Rise Time
@@ -811,7 +806,7 @@ The negative slack can be fixed by setting appropriate values of variables. Redu
 
 
 <div align="center">
-![68 183 188 194 - Remote Desktop Connection 29-01-2023 23_13_22](https://user-images.githubusercontent.com/104830557/215358749-10273a4f-9e80-4e74-b6ca-b30b22089d96.png)
+![image](https://user-images.githubusercontent.com/104830557/215379687-9f0892b6-7e8d-474d-8942-9dcf6170a5ec.png)
 	</div>
 	
 We can see the cell by zooming by pressing `z`. We can also see the custom cell in the cell manager.
