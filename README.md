@@ -25,11 +25,12 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
   * [Utilization Factor and Aspect Ratio](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#utilization-factor-and-aspect-ratio)
   * [Power Planning](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#power-planning)
   * [Pin Placement](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#pin-placement)
-  
-* [DAY 2 - LAB](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2---lab)
-  + [Floorplan Default Values](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#floorplan-defaults)
-  + [Assignment 2: Find the die area](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#assignment-2-find-the-die-area)
-  + [Floorplan Layout View](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#floorplan-layout-view)
+  * [DAY 2 - LAB](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2---lab)
+    + [Floorplan Default Values](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#floorplan-defaults)
+    + [Assignment 2: Find the die area](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#assignment-2-find-the-die-area)
+    + [Floorplan Layout View](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#floorplan-layout-view)
+
+
 
 - [DAY 3- Design library cell using Magic Layout and ngspice characterization](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-3--design-library-cell-using-magic-layout-and-ngspice-characterization)
   * [Standard Cell](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#standard-cell)
