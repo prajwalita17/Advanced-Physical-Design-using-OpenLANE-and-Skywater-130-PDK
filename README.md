@@ -2,6 +2,13 @@
 This repository contains the learnings from Advanced Physical Design Using OpenLANE / SKY130 workshop. It is primarily foucused on a complete RTL2GDS flow of PICORV32A RISC-V core designwith the help of open-source EDA tool OpenLANE and Google-SkyWater’s first manufacturable open source 130nm process design kit (pdk). This repository consolidates the lab activities done as a part of the 5-day workshop.
 
 ## Course Contents
+- [Introduction To RTL to GDSII Flow](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#introduction-to-rtl-to-gdsii-flow)
+- What is EDA and OpenLANE?
+- RTL2GDS OpenLANE Flow
+- Google Skywater 130nm PDK
+- List of All Open-Source Tools Used
+- RISC-V PicoRV32
+
 ### Day1 – Inception of open-source EDA, OpenLANE and Sky130 PDK
 
 - How to talk to computers
@@ -39,10 +46,24 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 - PNR interactive flow tutorial of what this project does and who it's for
 - [LAB - DAY 5](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-5)
 
+# Inception of open-source EDA, OpenLANE and Sky130 PDK
 
-------------------------------------------------------------------------------------------
-### Inception of open-source EDA, OpenLANE and Sky130 PDK
-------------------------------------------------------------------------------
+## Introduction To RTL to GDSII Flow
+RTL to GDSII flow refers to the all the steps involved in converting a logical Register Transfer Level(RTL) Design to a fabrication ready GDSII format. GDSII is a database file format which is an industry standard for data exchange of IC layout artwork. The RTL to GSDII flow consists of following steps:
+
+- RTL Synthesis
+- Static Timing Analysis(STA)
+- Design for Testability(DFT)
+- Floorplanning
+- Placement
+- Clock Tree Synthesis(CTS)
+- Routing (Global and Detailed)
+- SPEF Extraction
+
+![image](https://user-images.githubusercontent.com/104830557/215877734-d590ccbb-2b06-40c9-a070-5e4e64627e54.png)
+
+
+## What is EDA and OpenLANE?
 
 **Open source EDA (Electronic Design Automation)** refers to a set of software tools that are freely available and can be used for designing and analyzing electronic systems. These tools include schematic capture, simulation, and PCB layout, and they can be used to create designs for a wide range of applications, such as microcontrollers, FPGAs, and RF circuits. Open source EDA tools are typically developed by a community of users and developers, who share their knowledge and collaborate on new features and improvements.
 Some popular open source VLSI EDA tools include:
@@ -60,7 +81,9 @@ Some popular open source VLSI EDA tools include:
 - **Power and performance optimization**: OpenLANE can analyze and optimize a design for power and performance, including power-grid analysis, power-aware synthesis, and power-aware placement.
 - **Analog and mixed-signal design**: OpenLANE includes support for the design and verification of analog and mixed-signal circuits, including SPICE-level simulation and layout.
 
- OpenLANE flow consists of several stages. By default all the flow steps are run in sequence. Each stage may consist of multiple sub-stages. OpenLANE can also be run interactively as shown here.
+## RTL2GDS OpenLANE Flow
+
+ **OpenLANE flow** consists of several stages. By default all the flow steps are run in sequence. Each stage may consist of multiple sub-stages. OpenLANE can also be run interactively as shown here.
 
 1. Synthesis
       1. `yosys` - Performs RTL synthesis
@@ -88,6 +111,10 @@ Some popular open source VLSI EDA tools include:
       1. `Magic` - Performs DRC Checks & Antenna Checks
       2. `Netgen` - Performs LVS Checks
 
+![image](https://user-images.githubusercontent.com/104830557/214769763-47f149b8-d74b-4f58-966f-b114785f6814.png)
+
+## Google Skywater 130nm PDK
+
 **SKY130 PDK (Process Design Kit)** is a set of design and verification tools and components that is specifically developed and optimized for the SKY130 130nm CMOS process technology from TSMC (Taiwan Semiconductor Manufacturing Company). The PDK provides a library of standard cells and other components that are pre-verified and optimized for the SKY130 process, as well as a set of design and verification tools such as layout and extraction tools, simulation models, and testbenches.
 The PDK provides various components and tools that are needed for the design of integrated circuits, such as :
 - **Standard cell library**: A pre-verified library of standard cells, including logic gates, flip-flops, and other components, that are optimized for the SKY130 process.
@@ -95,7 +122,24 @@ The PDK provides various components and tools that are needed for the design of 
 - **Simulation models**: Behavioral and Spice-level simulation models of the standard cells and other components in the library, as well as a library of behavioral models for analog and mixed-signal components.
 - **Testbenches and verification suites**: Testbenches and other verification tools for verifying the functionality and timing of digital and mixed-signal circuits.-
 - **Design guidelines and best practices**: Guidelines and best practices for designing and verifying circuits for the SKY130 process.
+
+## List of Opensource Tools
+
 Overall, PDKs are used to simplify the design process of integrated circuits by providing a set of pre-verified components and tools that are optimized for a specific process technology, thus allowing designers to focus on the functional and architectural aspects of their designs.
+
+| Name of Tool    | Application / Usage| 
+|---------------|--------------------------------------|
+|Yosys	|Synthesis of RTL Design|
+|ABC	|Mapping of Netlist|
+|OpenSTA	|Static Timing Analysis|
+|OpenROAD	|Floorplanning, Placement, CTS, Optimization, Global Routing|
+|TritonRoute	|Detailed Routing|
+|Magic VLSI	|Layout Tool|
+|NGSPICE	SPICE |Extraction and Simulation|
+|SPEF_EXTRACTOR	|Generation of SPEF file from DEF file|
+
+
+## RISC-V PicoRV32
 
 **RISC-V PicoRV32** is an open-source, **32-bit RISC-V** processor core that is designed for use in FPGA (Field-Programmable Gate Array) and ASIC (Application-Specific Integrated Circuit) designs. It is a small and simple core that is intended for use in embedded systems and other low-power, low-cost applications.
 PicoRV32 is designed based on the RISC-V instruction set architecture (ISA), which is a free and open standard for computer processors. The PicoRV32 core implements the RV32IMC instruction set, which includes 32 general-purpose registers, 32-bit instructions, and support for integer and control instructions.
@@ -103,11 +147,6 @@ PicoRV32 is also a small and simple core, it is designed to have a small area an
 It is customizable and configurable, it can be easily adapted to different use cases and applications. It includes support for various features such as interrupts, debug interfaces, and memory protection.
 
 ![RISCV](https://user-images.githubusercontent.com/104830557/214847962-d95e6d88-59a5-4fa8-9c8c-a4ad8a752c68.jpeg)
-
-## RTL2GDS OpenLANE Flow
-
-
-![image](https://user-images.githubusercontent.com/104830557/214769763-47f149b8-d74b-4f58-966f-b114785f6814.png)
 
 
 -----------------------------------------------------------------------------------------------------------------------------------
