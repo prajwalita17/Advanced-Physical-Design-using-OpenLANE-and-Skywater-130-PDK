@@ -31,12 +31,15 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
   + [Assignment 2: Find the die area](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#assignment-2-find-the-die-area)
   + [Floorplan Layout View](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#floorplan-layout-view)
 
-### Day 3 - Design and characterize one library cell using Magic Layout tool and ngspice
-
-- Labs for CMOS inverter ngspice simulations
-- Inception of Layout – CMOS fabrication process
-- Sky130 Tech File Labs
-- [LAB - DAY 3](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-3)
+- [DAY 3- Design library cell using Magic Layout and ngspice characterization](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-3--design-library-cell-using-magic-layout-and-ngspice-characterization)
+  * [Standard Cell](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#standard-cell)
+  * [Cell Characterization](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#cell-characterization)
+  * [Day 3 - LAB](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-3---lab)
+    + [Standard Cell Design](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#standard-cell-design)
+    + [Output vs Input Plot](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#output-vs-input-plot)
+    + [Cell Characterization and Measurements](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#cell-characterization-and-measurements)
+    + [Measurements for Varying W/L Ratio](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#measurements-for-varying-wl-ratio)
+    + [Measurements for Varying Output Load Capacitances](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#measurements-for-different-output-load-capacitances)
 
 ### Day 4 - Pre-layout timing analysis and importance of good clock tree
 
@@ -52,7 +55,7 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
 - PNR interactive flow tutorial of what this project does and who it's for
 - [LAB - DAY 5](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-5)
 
-# Inception of open-source EDA, OpenLANE and Sky130 PDK
+# DAY 1- Inception of open-source EDA, OpenLANE and Sky130 PDK
 
 ## Introduction To RTL to GDSII Flow
 RTL to GDSII flow refers to the all the steps involved in converting a logical Register Transfer Level(RTL) Design to a fabrication ready GDSII format. GDSII is a database file format which is an industry standard for data exchange of IC layout artwork. The RTL to GSDII flow consists of following steps:
@@ -546,18 +549,18 @@ Number of flip flops (sky130_fd_sc_hd__dfxtp_2) = 1613
 Flip flop ratio =1613/14876 = 10.84 %
 ```
 
-## Day 2 - Good floorplan vs bad floorplan and introduction to library cells
+# DAY 2- Good floorplan vs bad floorplan and introduction to library cells
 
-### Chip Floorplanning
+## Chip Floorplanning
 Chip Floorplanning is the arrangement of logical block, library cells, pins on silicon chip. It makes sure that every module has been assigned an appropriate area and aspect ratio, every pin of the module has connection with other modules or periphery of the chip and modules are arranged in a way such that it consumes lesser area on a chip.
 
-### Utilization Factor and Aspect Ratio
+## Utilization Factor and Aspect Ratio
 Utilization Factor is ratio of the area of core used by standard cells to the total core area. The utilization factor is generally kept in the range of 0.5-0.7 i.e. 50% - 60%. Maintaining a proper utilization factor facilitates placement and routing optimization.
 
-### Power Planning
+## Power Planning
 Power planning is a step in which power grid network is created to distribute power to each part of the design equally. This step deals with the unwanted voltage drop and ground bounce. Steady state IR Drop is caused by the resistance of the metal wires comprising the power distribution network. By reducing the voltage difference between local power and ground, steady-state IR Drop reduces both the speed and noise immunity of the local cells and macros.
 
-### Pin Placement
+## Pin Placement
 Pin placement is a important part of floorplanning as the timing delays and number of buffers required is dependent on the position of the pin. There are multiple pin placement option available such as equidistant placement, high-density placement.
 
 ## DAY 2 - LAB
@@ -698,16 +701,25 @@ The figure below shows the magic layout of the floor plan. Presently the layout 
 <img width="602" alt="unplaced cells" src="https://user-images.githubusercontent.com/104830557/215285581-c7d9f8eb-344c-4363-8f36-f9ddc84df41d.png">
 
 
------------------------------------------------------------------------------------------------------------------------------------
-### DAY 3
-### Standard Cell Design and Characterization
------------------------------------------------------------------------------------------------------------------------------------
+# DAY 3- Design library cell using Magic Layout and ngspice characterization
 
-**Cell characterization** is the process of measuring the electrical characteristics of a digital logic cell. This includes measuring the cell's performance parameters such as delay, power consumption, and noise margins, under different conditions such as different input patterns and process variations. The results of cell characterization are used to create a library of cell models that can be used in the design and simulation of digital circuits.
+## Standard Cell
+
+A standard cell is a pre-designed and pre-verified building block used in the design of integrated circuits (ICs). Standard cells are basic logic functions, such as AND, OR, NOT, NAND, NOR, and XOR gates, as well as more complex functions such as flip-flops, latches, and arithmetic logic units.
+
+The use of standard cells streamlines the IC design process by allowing designers to assemble large and complex circuits from a library of pre-existing, tested, and verified components. This reduces the design time and effort compared to designing each individual component from scratch, and also improves design consistency and quality.
+
+Standard cells are typically available in a wide range of sizes and configurations, and are optimized for specific process technologies, such as CMOS or bipolar. They are also standardized in terms of their physical dimensions and the location of their input/output (I/O) pins, which makes them easier to place and route on an IC. This, in turn, enables higher density and faster design cycles, and makes it possible to design more complex ICs with a higher degree of accuracy and reliability.
+
+## Cell characterization
+Cell characterization is the process of measuring the electrical characteristics of a digital logic cell. This includes measuring the cell's performance parameters such as delay, power consumption, and noise margins, under different conditions such as different input patterns and process variations. The results of cell characterization are used to create a library of cell models that can be used in the design and simulation of digital circuits.
 
 During the characterization process, the cell's input and output waveforms are measured using testbenches and the results are used to create a model that describes the cell's behavior under different conditions. The model is then used to predict the cell's performance in the overall circuit design, allowing designers to optimize the circuit's performance and ensure that it meets the required specifications. Cell characterization is an important step in the VLSI design flow, as it allows designers to create accurate models of the cells that will be used in the final circuit, and thus can help to improve the yield and reliability of the final product.
 
+## Day 3 - LAB 
 The focus of this section of LAB work is to design a standard cell (inverter) spice deck and characterize the cell for various W/L ratio and output load capacitance. 
+
+### Standard Cell Design
 
 We use the inverter design from `vsdstdcelldesign.git`. The command to clone and add the sky130A.tech file to vsdstdcell design folder is as shown.
 ```
@@ -730,6 +742,7 @@ prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openla
 
 <img width="170" alt="vsdstdcell" src="https://user-images.githubusercontent.com/104830557/215286280-5d2e9b10-8de3-4136-ae65-d1496fc1a72f.png">
 
+### Modification and Extraction of Spice Deck
 
 `.spice` file is extracted from the `.mag` file using `extract all`, `ext2spice cthresh 0 rthresh 0` and 'ext2spice` commands in `tkcon 2.3 Main` console as shown.
 
@@ -746,6 +759,7 @@ prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openla
 
 ![wp24](https://user-images.githubusercontent.com/104830557/215353087-02ba5fcd-f20c-46c3-a4a1-28f30b8462d4.png)
 
+### Output vs Input Plot
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/vsdstdcelldesign$ ngspice sky130_inv.spice
 ```
@@ -772,12 +786,15 @@ vdd#branch                        -3.32413e-12
 No. of Data Rows : 145
 ngspice 1 -> plot y vs time a
 ```
+### Cell Characterization and Measurements
 
-To characerize the cell, we find the following parameters for various W/L ratio or NMOS and PMOS.
+To characerize the cell, we find the following parameters for various W/L ratio and Output Load Capacitance.
 - Rise Time
 - Fall Time
 - Cell Rise Delay
 - Cell Fall Delay
+
+### Measurements for Varying W/L Ratio
 
 Let us calculate these parameters for inv cell with output capacitance of 2fF. Running ngspice simulations and measuring the parameters for inverter circuit for the following two cases, we get the following results.
 - $W_n$ = 2 $W_p$ 
@@ -792,7 +809,6 @@ Let us calculate these parameters for inv cell with output capacitance of 2fF. R
 
 ![image](https://user-images.githubusercontent.com/104830557/215378257-1fcc687a-4c39-4687-a5a4-102cfde07df4.png)
 
-
 Similarly, running ngspice simulations and measuring the parameters for inverter circuit for the following two cases, we get the following results.
 - $W_p$ = 2 $W_n$
 - $W_p$ = 4 $W_n$
@@ -803,6 +819,8 @@ Similarly, running ngspice simulations and measuring the parameters for inverter
 | Fall Time |43.63 ps|56.87 ps|
 | Cell Rise Delay  | 121.29 ps|38.21 ps|
 | Cell Fall Delay  | 24.8 ps|70 ps|
+
+### Measurements for different Output Load Capacitances
 
 Running ngspice simulations and measuring the parameters for inverter circuit for two different output load capacitances while keeping $W_p$ = 2 $W_n$, we get the following results.
 
