@@ -1,34 +1,35 @@
 # Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK
 This repository contains the learnings from Advanced Physical Design Using OpenLANE / SKY130 workshop. It is primarily foucused on a complete RTL2GDS flow of PICORV32A RISC-V core designwith the help of open-source EDA tool OpenLANE and Google-SkyWater’s first manufacturable open source 130nm process design kit (pdk). This repository consolidates the lab activities done as a part of the 5-day workshop.
 
-## Course Contents
-- [Inception of open-source EDA, OpenLANE and Sky130 PDK](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#inception-of-open-source-eda-openlane-and-sky130-pdk)
+## Table of Contents
+- [DAY 1 - Inception of open-source EDA, OpenLANE and Sky130 PDK](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#inception-of-open-source-eda-openlane-and-sky130-pdk)
 
-- [Introduction To RTL to GDSII Flow](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#introduction-to-rtl-to-gdsii-flow)
+  * [Introduction To RTL to GDSII Flow](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#introduction-to-rtl-to-gdsii-flow)
+  * [What is EDA and OpenLANE?](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#what-is-eda-and-openlane)
+  * [RTL2GDS OpenLANE Flow](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#rtl2gds-openlane-flow)
+  * [Google Skywater 130nm PDK](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#google-skywater-130nm-pdk)
+  * [List of Opensource Tools](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#list-of-opensource-tools)
+  * [RISC-V PicoRV32](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#risc-v-picorv32)
+  * [How to talk to Computers](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#how-to-talk-to-computers)
+     + [Basic IC Design Terminologies](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#basic-ic-design-terminologies)
+    + [Introduction To RISC-V](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#introduction-to-risc-v)
+    + [From Software to Applications](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#from-software-to-applications)
+* [DAY 1- LAB](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#getting-familiar-to-open-source-eda-tools)
+    + [Understanding the File Structure]()
+    + [Design Preparation](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-preparation)
+    + [Design Synthesis and Results](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-synthesis-and-results)
+    + [Assignment 1: Calculation of Flop ratio](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#assignment-1-calculation-of-flop-ratio)
 
-- [What is EDA and OpenLANE?](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#what-is-eda-and-openlane)
-
-- [RTL2GDS OpenLANE Flow](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#rtl2gds-openlane-flow)
-
-- [Google Skywater 130nm PDK](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#google-skywater-130nm-pdk)
-
-- [List of Opensource Tools](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#list-of-opensource-tools)
-
-- [RISC-V PicoRV32](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#risc-v-picorv32)
-
-- How to talk to computers
-- SoC design and OpenLANE
-- Starting RISC-V SoC Reference design
-- Get familiar to open-source EDA tools
-- [LAB- DAY 1](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-1)
-
-### Day 2 - Understand importance of good floorplan vs bad floorplan and introduction to library cells
-
-- Chip Floor planning considerations
-- Library Binding and Placement
-- Cell design and characterization flows
-- General timing characterization parameters
-- [LAB - DAY 2](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2)
+- [Day 2 - Good floorplan vs bad floorplan and introduction to library cells](https://github.cog)
+  * [Chip Floorplanning](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#chip-floorplanning)
+  * [Utilization Factor and Aspect Ratio](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#utilization-factor-and-aspect-ratio)
+  * [Power Planning](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#power-planning)
+  * [Pin Placement](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#pin-placement)
+  
+* [DAY 2 - LAB](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-2---lab)
+  + [Floorplan Default Values](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#floorplan-defaults)
+  + [Assignment 2: Find the die area](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#assignment-2-find-the-die-area)
+  + [Floorplan Layout View](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#floorplan-layout-view)
 
 ### Day 3 - Design and characterize one library cell using Magic Layout tool and ngspice
 
@@ -153,11 +154,43 @@ It is customizable and configurable, it can be easily adapted to different use c
 
 ![RISCV](https://user-images.githubusercontent.com/104830557/214847962-d95e6d88-59a5-4fa8-9c8c-a4ad8a752c68.jpeg)
 
+## How to talk to Computers
+### Basic IC Design Terminologies
+During the Physical Designing, one will come across multiple terminologies that are frequently used. Some of them are mentioned below:
 
------------------------------------------------------------------------------------------------------------------------------------
-### DAY 1
+**Package**: It is a case that surrounds the circuit material to protect it from physical damage or corrosion and allows for mounting of the electrical contacts connecting it to the printed circuit board (PCB). 
+
+A QFN 48 package refers to a specific type of QFN package that has 48 leads. The number of leads in a QFN package indicates the number of electrical connections that can be made to the integrated circuit inside the package. In this case, the QFN 48 package has 48 connections, which allows for a high level of functionality and complexity in the underlying integrated circuit. This package size is commonly used for microcontrollers, power management ICs, and RF devices. Theimage shows an IC with 48 pins and Quad Flat No-Leads(QFN) package.
+
+![image](https://user-images.githubusercontent.com/104830557/215885349-11876e63-8da3-4816-9a44-ab483ad94285.png)
+
+**Die** refers to a piece of semiconductor material (typically silicon) that has been processed and patterned to form an integrated circuit (IC). The die contains the transistors, resistors, capacitors, and other components that make up the circuits that perform the intended functions of the IC.
+
+**Core** is a subcomponent of the die that refers to the central portion of the integrated circuit that contains the most critical and complex circuits of the IC. This can include the processor core, memory arrays, or other key components that define the main functionality of the IC. The core is usually surrounded by peripheral circuits that provide additional functionality, such as input/output (I/O) circuits, power management circuits, or clock distribution circuits.
+
+**Pads**: These are the interfaces between the internal signals of a chip and the external pins. Wire bonds run between the pads and the external pins.
+
+### Introduction to RISC-V
+
+RISC-V is an open instruction set architechture rooted on reduced instruction set computer principles. It is an open source ISA used for processor design.
+
+RISC-V Characterstics
+- It uses one clock cycle per instruction.
+- It follows the th RISC Princples.
+- It has both 32-bit and 64-bit varients. It also support floating point instruction.
+- It avoids micro-architechture or technology dependent features.
+- It accelerates the time for design to reach the market as it uses open-source IP.
+
+### From Software to Applications
+
+Application software like Microsoft word can run on the hardware with the Instruction Set as the main interface. To understand more about this, the below image shows the transition from Application software -> Compiler -> Assembler -> Instructions in binary as specified by the ISA -> Executed on an RTL -> RTL to Chip Layout process is the Physical Design.
+
+![image](https://user-images.githubusercontent.com/104830557/215886768-8fcdd9a1-b86d-482b-9bb8-f0cdf151ff5b.png)
+
+## DAY 1- LAB
+
 ### Understanding the File Structure and Synthesis
------------------------------------------------------------------------------------------------------------------------------------
+
 All the Process Design Kits(PDKs) are listed under the pdks/ directory. We use Sky130A PDK for this design. There are other open-source PDKs and related files are also available in the pdk/ directory. The location of the PDK directory is given of $PDK_ROOT variable.
 ```
 prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir$ ls
@@ -503,26 +536,39 @@ wns -24.91
 ```
 Static timing analysis at synthesis stage gives shows a total negative slack of `-3258.36` and worst negative slack of `-24.91`.
 
-```
-Assignment 1: Calculation of Flop ratio
 
+### Assignment 1: Calculation of Flop ratio
+```
 From the report we can see that
 Number of cells = 14876
 Number of flip flops (sky130_fd_sc_hd__dfxtp_2) = 1613
 
 Flip flop ratio =1613/14876 = 10.84 %
 ```
------------------------------------------------------------------------------------------------------------------------------------
-### DAY 2
-### Floorplanning
------------------------------------------------------------------------------------------------------------------------------------
+
+## Day 2 - Good floorplan vs bad floorplan and introduction to library cells
+
+### Chip Floorplanning
+Chip Floorplanning is the arrangement of logical block, library cells, pins on silicon chip. It makes sure that every module has been assigned an appropriate area and aspect ratio, every pin of the module has connection with other modules or periphery of the chip and modules are arranged in a way such that it consumes lesser area on a chip.
+
+### Utilization Factor and Aspect Ratio
+Utilization Factor is ratio of the area of core used by standard cells to the total core area. The utilization factor is generally kept in the range of 0.5-0.7 i.e. 50% - 60%. Maintaining a proper utilization factor facilitates placement and routing optimization.
+
+### Power Planning
+Power planning is a step in which power grid network is created to distribute power to each part of the design equally. This step deals with the unwanted voltage drop and ground bounce. Steady state IR Drop is caused by the resistance of the metal wires comprising the power distribution network. By reducing the voltage difference between local power and ground, steady-state IR Drop reduces both the speed and noise immunity of the local cells and macros.
+
+### Pin Placement
+Pin placement is a important part of floorplanning as the timing delays and number of buffers required is dependent on the position of the pin. There are multiple pin placement option available such as equidistant placement, high-density placement.
+
+## DAY 2 - LAB
+
 Once the synthesis step is done, the next step is floorplan. Before `run_floorplan` let us look at the list of some of the variables required for the floorplan step and their default values.
 The `floorplan.tcl` file contains the default values of variables required for the floorplan. For example the core utilization ratio `FP_CORE_UTIL` can be seen as 50%. 
 
 ```
 ‌‌prajwalita17@vsd-pd-workshop-05:~/Desktop/work/tools/openlane_working_dir/openlane/configuration$ less floorplan.tcl 
 ```
-### Floorplan defaults
+### Floorplan Default Values
 ```
 set ::env(FP_IO_VMETAL) 3
 set ::env(FP_IO_HMETAL) 4
@@ -624,11 +670,14 @@ ROW ROW_7 unithd 5520 29920 N DO 1417 BY 1 STEP 460 0 ;
 .
 .
 ```
+
+### Assignment 2: Find the die area.
 ```
-Assignment 2: Find the die area.
 Die area = 662.870 * 673.590
 	 = 446502.6033 sq. microns
 ```
+### Floorplan Layout View
+
 Let us view the floorplan in magic using the following command. 
 For this we need the `tech file`, `LEf file` and `DEF file`. 
 `~/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech` is the location of the `tech file`. `~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/26-01_11-22/tmp/merged.lef` is the location of the `LEF file`.
