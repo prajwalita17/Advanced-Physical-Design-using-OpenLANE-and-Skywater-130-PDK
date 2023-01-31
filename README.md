@@ -2,14 +2,19 @@
 This repository contains the learnings from Advanced Physical Design Using OpenLANE / SKY130 workshop. It is primarily foucused on a complete RTL2GDS flow of PICORV32A RISC-V core designwith the help of open-source EDA tool OpenLANE and Google-SkyWater’s first manufacturable open source 130nm process design kit (pdk). This repository consolidates the lab activities done as a part of the 5-day workshop.
 
 ## Course Contents
-- [Introduction To RTL to GDSII Flow](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#introduction-to-rtl-to-gdsii-flow)
-- What is EDA and OpenLANE?
-- RTL2GDS OpenLANE Flow
-- Google Skywater 130nm PDK
-- List of All Open-Source Tools Used
-- RISC-V PicoRV32
+- [Inception of open-source EDA, OpenLANE and Sky130 PDK](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#inception-of-open-source-eda-openlane-and-sky130-pdk)
 
-### Day1 – Inception of open-source EDA, OpenLANE and Sky130 PDK
+- [Introduction To RTL to GDSII Flow](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#introduction-to-rtl-to-gdsii-flow)
+
+- [What is EDA and OpenLANE?](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#what-is-eda-and-openlane)
+
+- [RTL2GDS OpenLANE Flow](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#rtl2gds-openlane-flow)
+
+- [Google Skywater 130nm PDK](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#google-skywater-130nm-pdk)
+
+- [List of Opensource Tools](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#list-of-opensource-tools)
+
+- [RISC-V PicoRV32](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#risc-v-picorv32)
 
 - How to talk to computers
 - SoC design and OpenLANE
