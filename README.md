@@ -11,15 +11,15 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
   * [List of Opensource Tools](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#list-of-opensource-tools)
   * [RISC-V PicoRV32](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#risc-v-picorv32)
   * [How to talk to Computers](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#how-to-talk-to-computers)
-     + [Basic IC Design Terminologies](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#basic-ic-design-terminologies)
+    + [Basic IC Design Terminologies](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#basic-ic-design-terminologies)
     + [Introduction To RISC-V](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#introduction-to-risc-v)
     + [From Software to Applications](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#from-software-to-applications)
-* [DAY 1- LAB](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#getting-familiar-to-open-source-eda-tools)
-    + [Understanding the File Structure]()
+  * [DAY 1- LAB](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-1--lab)
+    + [OpenLANE Initialization](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#openlane-initialization)
     + [Design Preparation](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-preparation)
     + [Design Synthesis and Results](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#design-synthesis-and-results)
     + [Assignment 1: Calculation of Flop ratio](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#assignment-1-calculation-of-flop-ratio)
-
+    
 - [Day 2 - Good floorplan vs bad floorplan and introduction to library cells](https://github.cog)
   * [Chip Floorplanning](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#chip-floorplanning)
   * [Utilization Factor and Aspect Ratio](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#utilization-factor-and-aspect-ratio)
@@ -29,8 +29,6 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
     + [Floorplan Default Values](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#floorplan-defaults)
     + [Assignment 2: Find the die area](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#assignment-2-find-the-die-area)
     + [Floorplan Layout View](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#floorplan-layout-view)
-
-
 
 - [DAY 3- Design library cell using Magic Layout and ngspice characterization](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-3--design-library-cell-using-magic-layout-and-ngspice-characterization)
   * [Standard Cell](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#standard-cell)
@@ -42,19 +40,19 @@ This repository contains the learnings from Advanced Physical Design Using OpenL
     + [Measurements for Varying W/L Ratio](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#measurements-for-varying-wl-ratio)
     + [Measurements for Varying Output Load Capacitances](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#measurements-for-different-output-load-capacitances)
 
-### Day 4 - Pre-layout timing analysis and importance of good clock tree
+- [Day 4- Pre-layout Timing Analysis and Importance of Good Clock Tree](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-4--pre-layout-timing-analysis-and-importance-of-good-clock-tree)
+  * [Importance of Pre-layout Timing Analysis](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#importance-of-pre-layout-timing-analysis)
+  * [Inportance of Clock Tree Synthesis](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#importance-of-clock-tree-synthesis)
+  * [DAY 4- LAB](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-4--lab)
+    + [Extracting LEF file from MAGIC file](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#extracting-lef-file-from-magic-file)
+    + [Modifying config.tcl File](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#modifying-configtcl-file)
+    + [Complete OpenLANE after including the custom standard cell](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#complete-openlane-after-including-the-custom-standard-cell)
+    + [Layout View after inclusing the custom cell](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#layout-view-after-inclusing-the-custom-cell)
 
-- Timing modelling using delay tables
-- Timing analysis with ideal clocks using openSTA
-- Clock tree synthesis TritonCTS and signal integrity
-- Timing analysis with real clocks using openSTA
-- [LAB - DAY 4](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-4)
-
-### Day 5 - Final steps for RTL2GDS
-
-- Routing and design rule check (DRC)
-- PNR interactive flow tutorial of what this project does and who it's for
-- [LAB - DAY 5](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-5)
+- [Day 5 - Final steps for RTL2GDS](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-5--final-steps-for-rtl2gds)
+  * [LAB - DAY 5](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#day-5--lab)
+    + [Continuation of OpenLANE Flow](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#continuation-of-openlane-flow)
+    + [Generation of GDS File](https://github.com/prajwalita17/Advanced-Physical-Design-using-OpenLANE-and-Skywater-130-PDK/edit/main/README.md#generation-of-gds-file)
 
 # DAY 1- Inception of open-source EDA, OpenLANE and Sky130 PDK
 
@@ -832,10 +830,17 @@ Running ngspice simulations and measuring the parameters for inverter circuit fo
 | Cell Rise Delay  | 121.29 ps|28.025 ps|
 | Cell Fall Delay  | 24.8 ps|34.4 ps|
 
------------------------------------------------------------------------------------------------------------------------------------
-### DAY 4
-### Extraction of LEF of Custom Cell and Placement
------------------------------------------------------------------------------------------------------------------------------------
+# Day 4- Pre-layout Timing Analysis and Importance of Good Clock Tree
+
+## Importance of Pre-layout Timing Analysis
+
+Pre-layout timing analysis is important because it helps to ensure that the design of a digital circuit meets its performance requirements before the actual physical implementation. The analysis predicts the timing behavior of the circuit based on its logical structure, allowing designers to identify and fix timing issues early in the design process. This can save time and resources, reduce the risk of design failures, and improve overall circuit performance.
+
+## Importance of Clock tree Synthesis
+
+Clock Tree Synthesis (CTS) is an important step in the design of digital circuits because it helps to ensure the correct distribution of clock signals throughout the design. The clock tree is the network of clock signals that drives the sequential elements (e.g., flip-flops) of a digital design. CTS optimizes the clock tree by reducing clock skew and jitter, improving the reliability and performance of the design. CTS also reduces power consumption by avoiding unnecessary clock buffering and shortening the clock path. Additionally, CTS helps to ensure that the design meets the specified timing constraints, reducing the risk of design failure and re-spins.
+
+## DAY 4- LAB
 
 ### Extracting LEF file from MAGIC file
 
@@ -856,7 +861,8 @@ Copy `my_base.sdc` `from vsdstdcell/extras` to `openlane/designs/picorv32a/src`.
 copy the `libs/sky130_fd_sc_hd__typical.lib`. `sky130_fd_sc_hd__fast.lib`. `sky130_fd_sc_hd__slow.lib` to `src` folder. Contents of `src` folder will be 
 
 ![src](https://user-images.githubusercontent.com/104830557/215357103-46b0213e-1419-404d-84c2-5c2ffece6535.png)
-	
+
+### Modifying `config.tcl` File
 We then modify the config.tcl file by adding these lines to existing config.tcl file.
 
 ```
@@ -868,6 +874,8 @@ set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/sr
 ```
 
 We now run the complete flow starting from invoking `docker` to `routing`. The flow will now include the custom cell `sky_130vsdinv`
+
+### Complete OpenLANE after including the custom standard cell
 
 Steps for the complete flow.
 - `prajwalita17@vsd-pd-workshop-05:/home/kunalg123/Desktop/work/tools/openlane_working_dir/openlane$ docker`
@@ -890,6 +898,7 @@ set ::env(SYNTH_SIZING) 0
 ```
 The negative slack can be fixed by setting appropriate values of variables. Reducing maximum fanout or replacing cells with lower drive strength can be replaced with those having higher drive strength. These changed may have a negative impact on area. 
 
+
 - `% init_floorplan`
 
 - `% place_io`
@@ -901,10 +910,11 @@ The negative slack can be fixed by setting appropriate values of variables. Redu
 - `% tap_decap_or`
 
 - `% detailed_placement`
+### Layout View after inclusing the custom cell
 
 ![standard cells after placement](https://user-images.githubusercontent.com/104830557/215380173-a55343d5-9f19-4be5-b0e5-880232f973eb.png)
 
-	
+
 We can see the cell by zooming by pressing `z`. We can also see the custom cell in the cell manager.
 
 
@@ -915,12 +925,11 @@ The expanded version of the custom cell is as shown.
 
 ![expanded version custom cell](https://user-images.githubusercontent.com/104830557/215380218-9a91b0df-68fe-4fd9-a5c2-ae3cd7a35ad2.png)
 
-	
 
------------------------------------------------------------------------------------------------------------------------------------
-### DAY 5
-### Clock Tree Synthesis and Routing
------------------------------------------------------------------------------------------------------------------------------------
+# DAY 5- Final steps for RTL2GDS
+
+## DAY 5- LAB
+### Continuation of OpenLANE Flow
 
 We continue the flow by running the following commands.
 
@@ -936,7 +945,10 @@ The DEF after CTS stage is as shown.
 
 - `% run_magic`
 
+
 ![image](https://user-images.githubusercontent.com/104830557/215392612-bf073a88-51a3-49aa-8758-f856dec8a9d8.png)
+
+### Generation of GDS File
 
 The location of the `picorv32a.gds` is as shown
 
